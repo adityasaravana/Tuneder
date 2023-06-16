@@ -98,7 +98,7 @@ struct SongView: View {
             .padding(.bottom)
             .background(Color.white)
             .cornerRadius(10)
-            .shadow(radius: 5)
+//            .shadow(radius: 12)
             .animation(.interactiveSpring())
             .offset(x: translation.width, y: 0)
             .rotationEffect(.degrees(Double(translation.width / geometry.size.width) * 25), anchor: .bottom)
