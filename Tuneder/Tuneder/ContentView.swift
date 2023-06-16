@@ -49,14 +49,7 @@ struct ContentView: View {
                 
                 if searchResults.count != 0 {
                     ForEach(self.searchResults, id: \.self) { song in
-//                        Rectangle()
-//                            .fill(song.backgroundColorSwiftUI.gradient)
-//                            .edgesIgnoringSafeArea(.all)
-//
-//                        Rectangle()
-//                            .fill(.ultraThinMaterial)
-//                            .edgesIgnoringSafeArea(.all)
-                        SongBackgroundView(song: song)
+//                        SongBackgroundView(song: song)
                         
                         VStack {
 //                            Text("TUNEDER").bold().font(.largeTitle).foregroundColor(.white).padding()

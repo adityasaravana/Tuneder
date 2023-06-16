@@ -8,6 +8,10 @@
 import SwiftUI
 import MusicKit
 
+enum LikeDislike: Int {
+    case like, dislike, none
+}
+
 struct SongView: View {
     @State private var translation: CGSize = .zero
     @State private var swipeStatus: LikeDislike = .none
@@ -17,10 +21,6 @@ struct SongView: View {
     private var onRemove: (_ song: Song) -> Void
     
     private var thresholdPercentage: CGFloat = 0.5 // when the song has draged 50% the width of the screen in either direction
-    
-    private enum LikeDislike: Int {
-        case like, dislike, none
-    }
     
     init(song: Song, onRemove: @escaping (_ song: Song) -> Void) {
         self.song = song
@@ -35,70 +35,22 @@ struct SongView: View {
         gesture.translation.width / geometry.size.width
     }
     
+    
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .leading) {
                 ZStack(alignment: swipeStatus == .like ? .topLeading : .topTrailing) {
-                    AsyncImage(url: song.artwork?.url(width: 700, height: 700)) { image in
-                        image
-                        
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: geometry.size.width, height: geometry.size.height * 0.75)
-                            .clipped()
-                        
-                    } placeholder: {
-                        Color.gray
-                    }
+                    SongImageView(song: song, geometry: geometry)
                     
-                    if swipeStatus == .like {
-                        Text("SAVE")
-                            .font(.headline)
-                            .padding()
-                            .cornerRadius(10)
-                            .foregroundColor(Color.green)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(Color.green, lineWidth: 3.0)
-                            ).padding(24)
-                            .rotationEffect(Angle.degrees(-45))
-                    } else if swipeStatus == .dislike {
-                        Text("SKIP")
-                            .font(.headline)
-                            .padding()
-                            .cornerRadius(10)
-                            .foregroundColor(Color.red)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(Color.red, lineWidth: 3.0)
-                            ).padding(.top, 45)
-                            .rotationEffect(Angle.degrees(45))
-                    }
+                    SwipeTextView(swipeStatus: swipeStatus)
                 }
                 
-                HStack {
-                    VStack(alignment: .leading, spacing: 6) {
-                        Text("\(song.title)")
-                            .font(.title)
-                            .bold()
-                        Text(song.artistName)
-                            .font(.subheadline)
-                            .bold()
-                        Text("text")
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
-                    }
-                    Spacer()
-                    
-                    Image(systemName: "info.circle")
-                        .foregroundColor(.gray)
-                }
-                .padding(.horizontal)
+                SongInfoView(song: song)
             }
             .padding(.bottom)
             .background(Color.white)
             .cornerRadius(10)
-//            .shadow(radius: 12)
+            //            .shadow(radius: 12)
             .animation(.interactiveSpring())
             .offset(x: translation.width, y: 0)
             .rotationEffect(.degrees(Double(translation.width / geometry.size.width) * 25), anchor: .bottom)
@@ -118,6 +70,7 @@ struct SongView: View {
                     }.onEnded { value in
                         // determine snap distance > 0.5 aka half the width of the screen
                         if abs(getGesturePercentage(geometry, from: value)) > thresholdPercentage {
+                            
                             onRemove(song)
                         } else {
                             translation = .zero
@@ -128,20 +81,70 @@ struct SongView: View {
     }
 }
 
-//struct SongView_Previews: PreviewProvider {
-//    var song: Song {
-//        do {
-//            guard let url = URL(string: "https://api.music.apple.com/v1/me/history/heavy-rotation") else { return }
-//              
-//            let request = MusicDataRequest(urlRequest: URLRequest(url: url))
-//            
-//              let response = try await request.response()
-//            
-//        }
-//    }
-//    static var previews: some View {
-//        SongView(song: song, onRemove: { removedSong in
-//            
-//        })
-//    }
-//}
+struct SongInfoView: View {
+    var song: Song
+    var body: some View {
+        HStack {
+            VStack(alignment: .leading, spacing: 6) {
+                Text("\(song.title)")
+                    .font(.title)
+                    .bold()
+                Text(song.artistName)
+                    .font(.subheadline)
+                    .bold()
+                Text("text")
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+            }
+            Spacer()
+        }
+        .padding(.horizontal)
+    }
+}
+
+struct SongImageView: View {
+    var song: Song
+    var geometry: GeometryProxy
+    var body: some View {
+        AsyncImage(url: song.artwork?.url(width: 700, height: 700)) { image in
+            image
+            
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: geometry.size.width, height: geometry.size.height * 0.75)
+                .clipped()
+            
+        } placeholder: {
+            Color.gray
+        }
+    }
+}
+
+struct SwipeTextView: View {
+    var swipeStatus: LikeDislike
+    var body: some View {
+        if swipeStatus == .like {
+            Text("SAVE")
+                .font(.headline)
+                .padding()
+                .cornerRadius(10)
+                .foregroundColor(Color.green)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.green, lineWidth: 3.0)
+                ).padding(24)
+                .rotationEffect(Angle.degrees(-45))
+        } else if swipeStatus == .dislike {
+            Text("SKIP")
+                .font(.headline)
+                .padding()
+                .cornerRadius(10)
+                .foregroundColor(Color.red)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.red, lineWidth: 3.0)
+                ).padding(.top, 45)
+                .rotationEffect(Angle.degrees(45))
+        }
+    }
+}
