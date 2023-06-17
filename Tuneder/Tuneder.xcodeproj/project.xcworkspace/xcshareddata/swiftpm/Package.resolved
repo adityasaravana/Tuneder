@@ -8,6 +8,15 @@
         "branch" : "master",
         "revision" : "6e4375a6126eac0a29893c607ae318bdbe33310c"
       }
+    },
+    {
+      "identity" : "swiftfulloadingindicators",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SwiftfulThinking/SwiftfulLoadingIndicators.git",
+      "state" : {
+        "revision" : "85858c0246dcd781228301f9928519f75ce89758",
+        "version" : "0.0.4"
+      }
     }
   ],
   "version" : 2

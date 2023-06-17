@@ -14,6 +14,9 @@
 		59557DA02A3D1F6B00ED1B74 /* audioTest.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 59557D9F2A3D1F6B00ED1B74 /* audioTest.m4a */; };
 		59557DA22A3D25E900ED1B74 /* Binding.name.toUnwrapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59557DA12A3D25E900ED1B74 /* Binding.name.toUnwrapped.swift */; };
 		59557DA42A3D2D4A00ED1B74 /* SongViewGuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59557DA32A3D2D4A00ED1B74 /* SongViewGuts.swift */; };
+		59557DA62A3D63C300ED1B74 /* AVPlayer.stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59557DA52A3D63C300ED1B74 /* AVPlayer.stop.swift */; };
+		59557DA92A3D66A900ED1B74 /* SwiftfulLoadingIndicators in Frameworks */ = {isa = PBXBuildFile; productRef = 59557DA82A3D66A900ED1B74 /* SwiftfulLoadingIndicators */; };
+		59557DAB2A3D691100ED1B74 /* FluidMusicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59557DAA2A3D691100ED1B74 /* FluidMusicButton.swift */; };
 		59FCBA4A2A3C00CE00FD6BB2 /* SongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FCBA492A3C00CE00FD6BB2 /* SongView.swift */; };
 		59FCBA542A3CFFC800FD6BB2 /* Song.backgroundColorSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FCBA532A3CFFC800FD6BB2 /* Song.backgroundColorSwiftUI.swift */; };
 		59FCBA562A3D048E00FD6BB2 /* FloatingClouds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FCBA552A3D048E00FD6BB2 /* FloatingClouds.swift */; };
@@ -30,6 +33,8 @@
 		59557D9F2A3D1F6B00ED1B74 /* audioTest.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = audioTest.m4a; sourceTree = "<group>"; };
 		59557DA12A3D25E900ED1B74 /* Binding.name.toUnwrapped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.name.toUnwrapped.swift; sourceTree = "<group>"; };
 		59557DA32A3D2D4A00ED1B74 /* SongViewGuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongViewGuts.swift; sourceTree = "<group>"; };
+		59557DA52A3D63C300ED1B74 /* AVPlayer.stop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPlayer.stop.swift; sourceTree = "<group>"; };
+		59557DAA2A3D691100ED1B74 /* FluidMusicButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FluidMusicButton.swift; sourceTree = "<group>"; };
 		59FCBA492A3C00CE00FD6BB2 /* SongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongView.swift; sourceTree = "<group>"; };
 		59FCBA512A3C30A100FD6BB2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59FCBA532A3CFFC800FD6BB2 /* Song.backgroundColorSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.backgroundColorSwiftUI.swift; sourceTree = "<group>"; };
@@ -43,6 +48,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				59FCBA5B2A3D078200FD6BB2 /* ColorKit in Frameworks */,
+				59557DA92A3D66A900ED1B74 /* SwiftfulLoadingIndicators in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +58,7 @@
 		5909A4302A3BFB21006B5B6D = {
 			isa = PBXGroup;
 			children = (
+				59557DA52A3D63C300ED1B74 /* AVPlayer.stop.swift */,
 				59557DA12A3D25E900ED1B74 /* Binding.name.toUnwrapped.swift */,
 				59FCBA532A3CFFC800FD6BB2 /* Song.backgroundColorSwiftUI.swift */,
 				59557D9F2A3D1F6B00ED1B74 /* audioTest.m4a */,
@@ -77,6 +84,7 @@
 				59FCBA552A3D048E00FD6BB2 /* FloatingClouds.swift */,
 				59FCBA572A3D06D700FD6BB2 /* SongBackgroundView.swift */,
 				59557DA32A3D2D4A00ED1B74 /* SongViewGuts.swift */,
+				59557DAA2A3D691100ED1B74 /* FluidMusicButton.swift */,
 				5909A43C2A3BFB21006B5B6D /* TunederApp.swift */,
 				5909A4402A3BFB22006B5B6D /* Assets.xcassets */,
 				5909A4422A3BFB22006B5B6D /* Preview Content */,
@@ -110,6 +118,7 @@
 			name = Tuneder;
 			packageProductDependencies = (
 				59FCBA5A2A3D078200FD6BB2 /* ColorKit */,
+				59557DA82A3D66A900ED1B74 /* SwiftfulLoadingIndicators */,
 			);
 			productName = Tuneder;
 			productReference = 5909A4392A3BFB21006B5B6D /* Tuneder.app */;
@@ -141,6 +150,7 @@
 			mainGroup = 5909A4302A3BFB21006B5B6D;
 			packageReferences = (
 				59FCBA592A3D078200FD6BB2 /* XCRemoteSwiftPackageReference "ColorKit" */,
+				59557DA72A3D66A900ED1B74 /* XCRemoteSwiftPackageReference "SwiftfulLoadingIndicators" */,
 			);
 			productRefGroup = 5909A43A2A3BFB21006B5B6D /* Products */;
 			projectDirPath = "";
@@ -171,9 +181,11 @@
 			files = (
 				5909A43F2A3BFB21006B5B6D /* ContentView.swift in Sources */,
 				59557DA22A3D25E900ED1B74 /* Binding.name.toUnwrapped.swift in Sources */,
+				59557DA62A3D63C300ED1B74 /* AVPlayer.stop.swift in Sources */,
 				59FCBA542A3CFFC800FD6BB2 /* Song.backgroundColorSwiftUI.swift in Sources */,
 				5909A43D2A3BFB21006B5B6D /* TunederApp.swift in Sources */,
 				59557DA42A3D2D4A00ED1B74 /* SongViewGuts.swift in Sources */,
+				59557DAB2A3D691100ED1B74 /* FluidMusicButton.swift in Sources */,
 				59FCBA582A3D06D700FD6BB2 /* SongBackgroundView.swift in Sources */,
 				59FCBA4A2A3C00CE00FD6BB2 /* SongView.swift in Sources */,
 				59FCBA562A3D048E00FD6BB2 /* FloatingClouds.swift in Sources */,
@@ -385,6 +397,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		59557DA72A3D66A900ED1B74 /* XCRemoteSwiftPackageReference "SwiftfulLoadingIndicators" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftfulThinking/SwiftfulLoadingIndicators.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.4;
+			};
+		};
 		59FCBA592A3D078200FD6BB2 /* XCRemoteSwiftPackageReference "ColorKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Boris-Em/ColorKit.git";
@@ -396,6 +416,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		59557DA82A3D66A900ED1B74 /* SwiftfulLoadingIndicators */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59557DA72A3D66A900ED1B74 /* XCRemoteSwiftPackageReference "SwiftfulLoadingIndicators" */;
+			productName = SwiftfulLoadingIndicators;
+		};
 		59FCBA5A2A3D078200FD6BB2 /* ColorKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 59FCBA592A3D078200FD6BB2 /* XCRemoteSwiftPackageReference "ColorKit" */;

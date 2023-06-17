@@ -8,6 +8,7 @@
 import SwiftUI
 import MusicKit
 import StoreKit
+import SwiftfulLoadingIndicators
 
 struct ContentView: View {
     @State private var searchText = ""
@@ -18,15 +19,14 @@ struct ContentView: View {
     private func searchMusic() {
         Task {
             do {
-                var request = MusicLibraryRequest<Song>()
-                request.filter(text: "taylor swift")
+//                var request = MusicCatalogChartsRequest(types: [Song.self])
+                let request = MusicCatalogSearchRequest(term: "taylor swift", types: [Song.self])
+                
                 
                 let response = try await request.response()
                                 
-                let reversedArray = response.items.reversed()
-                searchResults = reversedArray.reversed()
+                searchResults = response.songs.reversed().reversed()
                 
-                //                searchResults = try await request.response().items
             } catch {
                 print("Error searching for music: \(error.localizedDescription)")
             }
@@ -46,7 +46,6 @@ struct ContentView: View {
     var body: some View {
         VStack {
             ZStack {
-                Color.gray.edgesIgnoringSafeArea(.all)
                 if searchResults.count != 0 {
                     ForEach(self.searchResults, id: \.self) { song in
 //                        SongBackgroundView(song: song)
@@ -57,9 +56,6 @@ struct ContentView: View {
                         }
                         
                         Group {
-                            // Range Operator
-                            
-                            
                             SongView(song: song, onRemove: { removedSong in
                                 // Remove that song from our array
                                 self.searchResults.removeAll { $0.id == removedSong.id }
@@ -71,7 +67,8 @@ struct ContentView: View {
                         }
                     }
                 } else {
-                    Text("End Of List")
+//                    Text("End Of List")
+                    LoadingIndicator(animation: .text, size: .large).foregroundColor(.black)
                 }
             }
             
