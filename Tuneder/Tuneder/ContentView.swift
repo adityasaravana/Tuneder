@@ -46,7 +46,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             ZStack {
-                
+                Color.gray.edgesIgnoringSafeArea(.all)
                 if searchResults.count != 0 {
                     ForEach(self.searchResults, id: \.self) { song in
 //                        SongBackgroundView(song: song)
@@ -75,7 +75,8 @@ struct ContentView: View {
                 }
             }
             
-        }.onAppear {
+        }
+        .onAppear {
             SKCloudServiceController.requestAuthorization {(status: SKCloudServiceAuthorizationStatus) in
                 //                switch status {
                 //                case .denied, .restricted: disableAppleMusicBasedFeatures()

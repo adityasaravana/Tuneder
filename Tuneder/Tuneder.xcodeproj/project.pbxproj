@@ -11,9 +11,9 @@
 		5909A43F2A3BFB21006B5B6D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5909A43E2A3BFB21006B5B6D /* ContentView.swift */; };
 		5909A4412A3BFB22006B5B6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5909A4402A3BFB22006B5B6D /* Assets.xcassets */; };
 		5909A4442A3BFB22006B5B6D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5909A4432A3BFB22006B5B6D /* Preview Assets.xcassets */; };
-		59557D9E2A3D1EA900ED1B74 /* AudioPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59557D9D2A3D1EA900ED1B74 /* AudioPlayerView.swift */; };
 		59557DA02A3D1F6B00ED1B74 /* audioTest.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 59557D9F2A3D1F6B00ED1B74 /* audioTest.m4a */; };
 		59557DA22A3D25E900ED1B74 /* Binding.name.toUnwrapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59557DA12A3D25E900ED1B74 /* Binding.name.toUnwrapped.swift */; };
+		59557DA42A3D2D4A00ED1B74 /* SongViewGuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59557DA32A3D2D4A00ED1B74 /* SongViewGuts.swift */; };
 		59FCBA4A2A3C00CE00FD6BB2 /* SongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FCBA492A3C00CE00FD6BB2 /* SongView.swift */; };
 		59FCBA542A3CFFC800FD6BB2 /* Song.backgroundColorSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FCBA532A3CFFC800FD6BB2 /* Song.backgroundColorSwiftUI.swift */; };
 		59FCBA562A3D048E00FD6BB2 /* FloatingClouds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FCBA552A3D048E00FD6BB2 /* FloatingClouds.swift */; };
@@ -27,9 +27,9 @@
 		5909A43E2A3BFB21006B5B6D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5909A4402A3BFB22006B5B6D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5909A4432A3BFB22006B5B6D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		59557D9D2A3D1EA900ED1B74 /* AudioPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerView.swift; sourceTree = "<group>"; };
 		59557D9F2A3D1F6B00ED1B74 /* audioTest.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = audioTest.m4a; sourceTree = "<group>"; };
 		59557DA12A3D25E900ED1B74 /* Binding.name.toUnwrapped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.name.toUnwrapped.swift; sourceTree = "<group>"; };
+		59557DA32A3D2D4A00ED1B74 /* SongViewGuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongViewGuts.swift; sourceTree = "<group>"; };
 		59FCBA492A3C00CE00FD6BB2 /* SongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongView.swift; sourceTree = "<group>"; };
 		59FCBA512A3C30A100FD6BB2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59FCBA532A3CFFC800FD6BB2 /* Song.backgroundColorSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.backgroundColorSwiftUI.swift; sourceTree = "<group>"; };
@@ -76,7 +76,7 @@
 				5909A43E2A3BFB21006B5B6D /* ContentView.swift */,
 				59FCBA552A3D048E00FD6BB2 /* FloatingClouds.swift */,
 				59FCBA572A3D06D700FD6BB2 /* SongBackgroundView.swift */,
-				59557D9D2A3D1EA900ED1B74 /* AudioPlayerView.swift */,
+				59557DA32A3D2D4A00ED1B74 /* SongViewGuts.swift */,
 				5909A43C2A3BFB21006B5B6D /* TunederApp.swift */,
 				5909A4402A3BFB22006B5B6D /* Assets.xcassets */,
 				5909A4422A3BFB22006B5B6D /* Preview Content */,
@@ -169,11 +169,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				59557D9E2A3D1EA900ED1B74 /* AudioPlayerView.swift in Sources */,
 				5909A43F2A3BFB21006B5B6D /* ContentView.swift in Sources */,
 				59557DA22A3D25E900ED1B74 /* Binding.name.toUnwrapped.swift in Sources */,
 				59FCBA542A3CFFC800FD6BB2 /* Song.backgroundColorSwiftUI.swift in Sources */,
 				5909A43D2A3BFB21006B5B6D /* TunederApp.swift in Sources */,
+				59557DA42A3D2D4A00ED1B74 /* SongViewGuts.swift in Sources */,
 				59FCBA582A3D06D700FD6BB2 /* SongBackgroundView.swift in Sources */,
 				59FCBA4A2A3C00CE00FD6BB2 /* SongView.swift in Sources */,
 				59FCBA562A3D048E00FD6BB2 /* FloatingClouds.swift in Sources */,

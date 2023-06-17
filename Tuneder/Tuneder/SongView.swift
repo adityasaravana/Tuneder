@@ -7,12 +7,24 @@
 
 import SwiftUI
 import MusicKit
+import AVFoundation
 
 enum LikeDislike: Int {
     case like, dislike, none
 }
 
 struct SongView: View {
+    @State var audioPlayer: AVAudioPlayer!
+    @State var progress: CGFloat = 0.0
+    @State var playing: Bool = false
+    @State var duration: Double = 0.0
+    @State var formattedDuration: String = ""
+    @State var formattedProgress: String = "00:00"
+
+    var url: URL {
+        return song.previewAssets?.first?.url ?? URL(fileURLWithPath: Bundle.main.path(forResource: "audioTest", ofType: "m4a")!)
+    }
+    
     @State private var translation: CGSize = .zero
     @State private var swipeStatus: LikeDislike = .none
     
@@ -46,14 +58,93 @@ struct SongView: View {
                 }
                 
                 SongInfoView(song: song)
+                
+                VStack {
+
+                    HStack {
+                        Text(formattedProgress)
+                            .font(.caption.monospacedDigit())
+
+                        // this is a dynamic length progress bar
+                        GeometryReader { gr in
+                            Capsule()
+                                .stroke(Color.blue, lineWidth: 2)
+                                .background(
+                                    Capsule()
+                                        .foregroundColor(Color.accentColor)
+                                        .frame(width: gr.size.width * progress, height: 8), alignment: .leading)
+                        }
+                        .frame( height: 8)
+
+                        Text(formattedDuration)
+                            .font(.caption.monospacedDigit())
+                    }
+                    .padding()
+                    .frame(height: 50, alignment: .center)
+                    .accessibilityElement(children: .ignore)
+                    .accessibility(identifier: "audio player")
+                    .accessibilityLabel(playing ? Text("Playing at ") : Text("Duration"))
+                    .accessibilityValue(Text("\(formattedProgress)"))
+
+                    //             the control buttons
+                    HStack(alignment: .center, spacing: 20) {
+                        Spacer()
+                        Button(action: {
+                            let decrease = self.audioPlayer.currentTime - 15
+                            if decrease < 0.0 {
+                                self.audioPlayer.currentTime = 0.0
+                            } else {
+                                self.audioPlayer.currentTime -= 15
+                            }
+                        }) {
+                            Image(systemName: "gobackward.15")
+                                .font(.title)
+                                .imageScale(.medium)
+                        }
+
+                        Button(action: {
+                            if audioPlayer.isPlaying {
+                                playing = false
+                                self.audioPlayer.pause()
+                            } else if !audioPlayer.isPlaying {
+                                playing = true
+                                self.audioPlayer.play()
+                            }
+                        }) {
+                            Image(systemName: playing ?
+                                  "pause.circle.fill" : "play.circle.fill")
+                                .font(.title)
+                                .imageScale(.large)
+                        }
+
+                        Button(action: {
+                            let increase = self.audioPlayer.currentTime + 15
+                            if increase < self.audioPlayer.duration {
+                                self.audioPlayer.currentTime = increase
+                            } else {
+                                // give the user the chance to hear the end if he wishes
+                                self.audioPlayer.currentTime = duration
+                            }
+                        }) {
+                            Image(systemName: "goforward.15")
+                                .font(.title)
+                                .imageScale(.medium)
+                        }
+                        Spacer()
+                    }
+                }
+                .foregroundColor(.accentColor)
+                .onAppear {
+                    initialiseAudioPlayer(url: url)
+                    print("---------------------------------------------------------")
+                    print("PREVIEW ASSETS ---")
+                    print(song.previewAssets?.description ?? "nil")
+                }
+                
+                
+                
             }
-            .padding(.bottom)
-            .background(Color.white)
-            .cornerRadius(10)
-            //            .shadow(radius: 12)
-            .animation(.interactiveSpring())
-            .offset(x: translation.width, y: 0)
-            .rotationEffect(.degrees(Double(translation.width / geometry.size.width) * 25), anchor: .bottom)
+            .modifier(SwipeableCard(translation: translation, geometry: geometry))
             .gesture(
                 DragGesture()
                     .onChanged { value in
@@ -70,81 +161,13 @@ struct SongView: View {
                     }.onEnded { value in
                         // determine snap distance > 0.5 aka half the width of the screen
                         if abs(getGesturePercentage(geometry, from: value)) > thresholdPercentage {
-                            
+                            audioPlayer.stop()
                             onRemove(song)
                         } else {
                             translation = .zero
                         }
                     }
             )
-        }
-    }
-}
-
-struct SongInfoView: View {
-    var song: Song
-    var body: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 6) {
-                Text("\(song.title)")
-                    .font(.title)
-                    .bold()
-                Text(song.artistName)
-                    .font(.subheadline)
-                    .bold()
-                Text("text")
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
-            }
-            Spacer()
-        }
-        .padding(.horizontal)
-    }
-}
-
-struct SongImageView: View {
-    var song: Song
-    var geometry: GeometryProxy
-    var body: some View {
-        AsyncImage(url: song.artwork?.url(width: 700, height: 700)) { image in
-            image
-            
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: geometry.size.width, height: geometry.size.height * 0.75)
-                .clipped()
-            
-        } placeholder: {
-            Color.gray
-        }
-    }
-}
-
-struct SwipeTextView: View {
-    var swipeStatus: LikeDislike
-    var body: some View {
-        if swipeStatus == .like {
-            Text("SAVE")
-                .font(.headline)
-                .padding()
-                .cornerRadius(10)
-                .foregroundColor(Color.green)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.green, lineWidth: 3.0)
-                ).padding(24)
-                .rotationEffect(Angle.degrees(-45))
-        } else if swipeStatus == .dislike {
-            Text("SKIP")
-                .font(.headline)
-                .padding()
-                .cornerRadius(10)
-                .foregroundColor(Color.red)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.red, lineWidth: 3.0)
-                ).padding(.top, 45)
-                .rotationEffect(Angle.degrees(45))
         }
     }
 }
