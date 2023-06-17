@@ -17,6 +17,8 @@
 		59557DA62A3D63C300ED1B74 /* AVPlayer.stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59557DA52A3D63C300ED1B74 /* AVPlayer.stop.swift */; };
 		59557DA92A3D66A900ED1B74 /* SwiftfulLoadingIndicators in Frameworks */ = {isa = PBXBuildFile; productRef = 59557DA82A3D66A900ED1B74 /* SwiftfulLoadingIndicators */; };
 		59557DAB2A3D691100ED1B74 /* FluidMusicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59557DAA2A3D691100ED1B74 /* FluidMusicButton.swift */; };
+		59557DAE2A3E559D00ED1B74 /* MusadoraKit in Frameworks */ = {isa = PBXBuildFile; productRef = 59557DAD2A3E559D00ED1B74 /* MusadoraKit */; };
+		59557DB02A3E559D00ED1B74 /* MusadoraLabsKit in Frameworks */ = {isa = PBXBuildFile; productRef = 59557DAF2A3E559D00ED1B74 /* MusadoraLabsKit */; };
 		59FCBA4A2A3C00CE00FD6BB2 /* SongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FCBA492A3C00CE00FD6BB2 /* SongView.swift */; };
 		59FCBA542A3CFFC800FD6BB2 /* Song.backgroundColorSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FCBA532A3CFFC800FD6BB2 /* Song.backgroundColorSwiftUI.swift */; };
 		59FCBA562A3D048E00FD6BB2 /* FloatingClouds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FCBA552A3D048E00FD6BB2 /* FloatingClouds.swift */; };
@@ -47,6 +49,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59557DAE2A3E559D00ED1B74 /* MusadoraKit in Frameworks */,
+				59557DB02A3E559D00ED1B74 /* MusadoraLabsKit in Frameworks */,
 				59FCBA5B2A3D078200FD6BB2 /* ColorKit in Frameworks */,
 				59557DA92A3D66A900ED1B74 /* SwiftfulLoadingIndicators in Frameworks */,
 			);
@@ -119,6 +123,8 @@
 			packageProductDependencies = (
 				59FCBA5A2A3D078200FD6BB2 /* ColorKit */,
 				59557DA82A3D66A900ED1B74 /* SwiftfulLoadingIndicators */,
+				59557DAD2A3E559D00ED1B74 /* MusadoraKit */,
+				59557DAF2A3E559D00ED1B74 /* MusadoraLabsKit */,
 			);
 			productName = Tuneder;
 			productReference = 5909A4392A3BFB21006B5B6D /* Tuneder.app */;
@@ -151,6 +157,7 @@
 			packageReferences = (
 				59FCBA592A3D078200FD6BB2 /* XCRemoteSwiftPackageReference "ColorKit" */,
 				59557DA72A3D66A900ED1B74 /* XCRemoteSwiftPackageReference "SwiftfulLoadingIndicators" */,
+				59557DAC2A3E559D00ED1B74 /* XCRemoteSwiftPackageReference "MusadoraKit" */,
 			);
 			productRefGroup = 5909A43A2A3BFB21006B5B6D /* Products */;
 			projectDirPath = "";
@@ -405,6 +412,14 @@
 				minimumVersion = 0.0.4;
 			};
 		};
+		59557DAC2A3E559D00ED1B74 /* XCRemoteSwiftPackageReference "MusadoraKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rryam/MusadoraKit.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		59FCBA592A3D078200FD6BB2 /* XCRemoteSwiftPackageReference "ColorKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Boris-Em/ColorKit.git";
@@ -420,6 +435,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 59557DA72A3D66A900ED1B74 /* XCRemoteSwiftPackageReference "SwiftfulLoadingIndicators" */;
 			productName = SwiftfulLoadingIndicators;
+		};
+		59557DAD2A3E559D00ED1B74 /* MusadoraKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59557DAC2A3E559D00ED1B74 /* XCRemoteSwiftPackageReference "MusadoraKit" */;
+			productName = MusadoraKit;
+		};
+		59557DAF2A3E559D00ED1B74 /* MusadoraLabsKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59557DAC2A3E559D00ED1B74 /* XCRemoteSwiftPackageReference "MusadoraKit" */;
+			productName = MusadoraLabsKit;
 		};
 		59FCBA5A2A3D078200FD6BB2 /* ColorKit */ = {
 			isa = XCSwiftPackageProductDependency;

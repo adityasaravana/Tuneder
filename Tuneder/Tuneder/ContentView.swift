@@ -7,25 +7,25 @@
 
 import SwiftUI
 import MusicKit
+import MusadoraKit
 import StoreKit
 import SwiftfulLoadingIndicators
 
 struct ContentView: View {
     @State private var searchText = ""
-    @State private var searchResults: [Song] = []
+    @State private var searchResults: MusicItemCollection<Song> = []
     
     
     
     private func searchMusic() {
         Task {
             do {
-//                var request = MusicCatalogChartsRequest(types: [Song.self])
-                let request = MusicCatalogSearchRequest(term: "taylor swift", types: [Song.self])
-                
-                
+                var request = MusicCatalogChartsRequest(genre: nil, types: [Song.self])
+//                let request = MusicCatalogSearchRequest(term: "taylor swift", types: [Song.self])
                 let response = try await request.response()
-                                
-                searchResults = response.songs.reversed().reversed()
+                
+//
+                searchResults = response.songCharts.first?.items.reversed().reversed() ?? []
                 
             } catch {
                 print("Error searching for music: \(error.localizedDescription)")
@@ -50,15 +50,13 @@ struct ContentView: View {
                     ForEach(self.searchResults, id: \.self) { song in
 //                        SongBackgroundView(song: song)
                         
-                        VStack {
-//                            Text("TUNEDER").bold().font(.largeTitle).foregroundColor(.white).padding()
-                            Spacer()
-                        }
                         
                         Group {
                             SongView(song: song, onRemove: { removedSong in
                                 // Remove that song from our array
-                                self.searchResults.removeAll { $0.id == removedSong.id }
+//                                self.searchResults.removeAll { $0.id == removedSong.id }
+                                
+                                searchResults = MusicItemCollection(searchResults.dropLast())
                             })
                             .padding()
                             .frame(height: 400)

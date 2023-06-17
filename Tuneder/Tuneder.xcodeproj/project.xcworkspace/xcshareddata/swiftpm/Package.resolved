@@ -10,12 +10,30 @@
       }
     },
     {
+      "identity" : "musadorakit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/rryam/MusadoraKit.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "1a83112b79fa13fac7cc950b0503e937658df78e"
+      }
+    },
+    {
       "identity" : "swiftfulloadingindicators",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SwiftfulThinking/SwiftfulLoadingIndicators.git",
       "state" : {
         "revision" : "85858c0246dcd781228301f9928519f75ce89758",
         "version" : "0.0.4"
+      }
+    },
+    {
+      "identity" : "swiftlintplugin",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/lukepistrol/SwiftLintPlugin",
+      "state" : {
+        "revision" : "d3ec7fb242ebe1d8e23bf17e58a1e27d43125994",
+        "version" : "0.2.6"
       }
     }
   ],
