@@ -14,30 +14,29 @@ enum LikeDislike: Int {
 }
 
 struct SongView: View {
-    @State private var player: AVPlayer?
+    //    @Binding var lastLikedSongID: String
+    @Binding var queue: MusicItemCollection<Song>
+    @State var player: AVPlayer?
     @State var isPlaying = false
     
-    @State private var translation: CGSize = .zero
-    @State private var swipeStatus: LikeDislike = .none
+    @State var translation: CGSize = .zero
+    @State var swipeStatus: LikeDislike = .none
     
     var song: Song
+    @State var lastLikedSong: Song? = nil
     
-    private var onRemove: (_ song: Song) -> Void
+    var onRemove: (_ song: Song) -> Void
     
-    private var thresholdPercentage: CGFloat = 0.5 // when the song has draged 50% the width of the screen in either direction
-    
-    init(song: Song, onRemove: @escaping (_ song: Song) -> Void) {
-        self.song = song
-        self.onRemove = onRemove
-    }
+    var thresholdPercentage: CGFloat = 0.5 // when the song has draged 50% the width of the screen in either direction
     
     /// What percentage of our own width have we swipped
     /// - Parameters:
     ///   - geometry: The geometry
     ///   - gesture: The current gesture translation value
-    private func getGesturePercentage(_ geometry: GeometryProxy, from gesture: DragGesture.Value) -> CGFloat {
+    func getGesturePercentage(_ geometry: GeometryProxy, from gesture: DragGesture.Value) -> CGFloat {
         gesture.translation.width / geometry.size.width
     }
+    
     
     
     var body: some View {
@@ -81,7 +80,7 @@ struct SongView: View {
                                 isPlaying = true
                             }
                         }) {
-                            ButtonView(isPlaying: isPlaying).font(.system(size: 30))
+                            ButtonView(isPlaying: isPlaying).font(.system(size: 24))
                         }
                         .padding()
                     }
@@ -116,8 +115,10 @@ struct SongView: View {
                             if swipeStatus == .like {
                                 DispatchQueue.main.async {
                                     print("SONG LIKED SONG LIKED SONG LIKED SONG LIKED SONG LIKED SONG LIKED SONG LIKED SONG LIKED")
+                                    
                                     let libraryHandler = MusicLibraryHandler()
                                     libraryHandler.addSong(song.id.rawValue)
+                                    lastLikedSong = song
                                 }
                             }
                         } else {

@@ -12,6 +12,11 @@
 		5909A4412A3BFB22006B5B6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5909A4402A3BFB22006B5B6D /* Assets.xcassets */; };
 		5909A4442A3BFB22006B5B6D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5909A4432A3BFB22006B5B6D /* Preview Assets.xcassets */; };
 		590A4F982A3E81E900FCF5AE /* MusicLibraryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590A4F972A3E81E900FCF5AE /* MusicLibraryHandler.swift */; };
+		590A4F9A2A3E8E9300FCF5AE /* Song.relatedSongs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590A4F992A3E8E9300FCF5AE /* Song.relatedSongs.swift */; };
+		590A4F9D2A3E927000FCF5AE /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 590A4F9C2A3E927000FCF5AE /* Defaults */; };
+		590A4F9F2A3E928400FCF5AE /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590A4F9E2A3E928400FCF5AE /* Defaults.swift */; };
+		590A4FA22A3E970100FCF5AE /* MusicAccessNotEnabledView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590A4FA12A3E970100FCF5AE /* MusicAccessNotEnabledView.swift */; };
+		590A4FAC2A3EA40F00FCF5AE /* SignUpForAppleMusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590A4FAB2A3EA40F00FCF5AE /* SignUpForAppleMusicView.swift */; };
 		59557DA02A3D1F6B00ED1B74 /* audioTest.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 59557D9F2A3D1F6B00ED1B74 /* audioTest.m4a */; };
 		59557DA22A3D25E900ED1B74 /* Binding.name.toUnwrapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59557DA12A3D25E900ED1B74 /* Binding.name.toUnwrapped.swift */; };
 		59557DA42A3D2D4A00ED1B74 /* SongViewGuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59557DA32A3D2D4A00ED1B74 /* SongViewGuts.swift */; };
@@ -34,6 +39,10 @@
 		5909A4402A3BFB22006B5B6D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5909A4432A3BFB22006B5B6D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		590A4F972A3E81E900FCF5AE /* MusicLibraryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicLibraryHandler.swift; sourceTree = "<group>"; };
+		590A4F992A3E8E9300FCF5AE /* Song.relatedSongs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.relatedSongs.swift; sourceTree = "<group>"; };
+		590A4F9E2A3E928400FCF5AE /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
+		590A4FA12A3E970100FCF5AE /* MusicAccessNotEnabledView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicAccessNotEnabledView.swift; sourceTree = "<group>"; };
+		590A4FAB2A3EA40F00FCF5AE /* SignUpForAppleMusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpForAppleMusicView.swift; sourceTree = "<group>"; };
 		59557D9F2A3D1F6B00ED1B74 /* audioTest.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = audioTest.m4a; sourceTree = "<group>"; };
 		59557DA12A3D25E900ED1B74 /* Binding.name.toUnwrapped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.name.toUnwrapped.swift; sourceTree = "<group>"; };
 		59557DA32A3D2D4A00ED1B74 /* SongViewGuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongViewGuts.swift; sourceTree = "<group>"; };
@@ -55,6 +64,7 @@
 				59557DB02A3E559D00ED1B74 /* MusadoraLabsKit in Frameworks */,
 				59FCBA5B2A3D078200FD6BB2 /* ColorKit in Frameworks */,
 				59557DA92A3D66A900ED1B74 /* SwiftfulLoadingIndicators in Frameworks */,
+				590A4F9D2A3E927000FCF5AE /* Defaults in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,10 +74,9 @@
 		5909A4302A3BFB21006B5B6D = {
 			isa = PBXGroup;
 			children = (
+				590A4FA02A3E928B00FCF5AE /* Extensions */,
+				590A4F9E2A3E928400FCF5AE /* Defaults.swift */,
 				590A4F972A3E81E900FCF5AE /* MusicLibraryHandler.swift */,
-				59557DA52A3D63C300ED1B74 /* AVPlayer.stop.swift */,
-				59557DA12A3D25E900ED1B74 /* Binding.name.toUnwrapped.swift */,
-				59FCBA532A3CFFC800FD6BB2 /* Song.backgroundColorSwiftUI.swift */,
 				59557D9F2A3D1F6B00ED1B74 /* audioTest.m4a */,
 				5909A43B2A3BFB21006B5B6D /* Tuneder */,
 				5909A43A2A3BFB21006B5B6D /* Products */,
@@ -93,6 +102,8 @@
 				59557DA32A3D2D4A00ED1B74 /* SongViewGuts.swift */,
 				59557DAA2A3D691100ED1B74 /* FluidMusicButton.swift */,
 				5909A43C2A3BFB21006B5B6D /* TunederApp.swift */,
+				590A4FA12A3E970100FCF5AE /* MusicAccessNotEnabledView.swift */,
+				590A4FAB2A3EA40F00FCF5AE /* SignUpForAppleMusicView.swift */,
 				5909A4402A3BFB22006B5B6D /* Assets.xcassets */,
 				5909A4422A3BFB22006B5B6D /* Preview Content */,
 			);
@@ -105,6 +116,17 @@
 				5909A4432A3BFB22006B5B6D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		590A4FA02A3E928B00FCF5AE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				590A4F992A3E8E9300FCF5AE /* Song.relatedSongs.swift */,
+				59557DA12A3D25E900ED1B74 /* Binding.name.toUnwrapped.swift */,
+				59FCBA532A3CFFC800FD6BB2 /* Song.backgroundColorSwiftUI.swift */,
+				59557DA52A3D63C300ED1B74 /* AVPlayer.stop.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +150,7 @@
 				59557DA82A3D66A900ED1B74 /* SwiftfulLoadingIndicators */,
 				59557DAD2A3E559D00ED1B74 /* MusadoraKit */,
 				59557DAF2A3E559D00ED1B74 /* MusadoraLabsKit */,
+				590A4F9C2A3E927000FCF5AE /* Defaults */,
 			);
 			productName = Tuneder;
 			productReference = 5909A4392A3BFB21006B5B6D /* Tuneder.app */;
@@ -161,6 +184,7 @@
 				59FCBA592A3D078200FD6BB2 /* XCRemoteSwiftPackageReference "ColorKit" */,
 				59557DA72A3D66A900ED1B74 /* XCRemoteSwiftPackageReference "SwiftfulLoadingIndicators" */,
 				59557DAC2A3E559D00ED1B74 /* XCRemoteSwiftPackageReference "MusadoraKit" */,
+				590A4F9B2A3E927000FCF5AE /* XCRemoteSwiftPackageReference "Defaults" */,
 			);
 			productRefGroup = 5909A43A2A3BFB21006B5B6D /* Products */;
 			projectDirPath = "";
@@ -189,14 +213,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				590A4FA22A3E970100FCF5AE /* MusicAccessNotEnabledView.swift in Sources */,
 				5909A43F2A3BFB21006B5B6D /* ContentView.swift in Sources */,
+				590A4F9F2A3E928400FCF5AE /* Defaults.swift in Sources */,
 				59557DA22A3D25E900ED1B74 /* Binding.name.toUnwrapped.swift in Sources */,
+				590A4F9A2A3E8E9300FCF5AE /* Song.relatedSongs.swift in Sources */,
 				590A4F982A3E81E900FCF5AE /* MusicLibraryHandler.swift in Sources */,
 				59557DA62A3D63C300ED1B74 /* AVPlayer.stop.swift in Sources */,
 				59FCBA542A3CFFC800FD6BB2 /* Song.backgroundColorSwiftUI.swift in Sources */,
 				5909A43D2A3BFB21006B5B6D /* TunederApp.swift in Sources */,
 				59557DA42A3D2D4A00ED1B74 /* SongViewGuts.swift in Sources */,
 				59557DAB2A3D691100ED1B74 /* FluidMusicButton.swift in Sources */,
+				590A4FAC2A3EA40F00FCF5AE /* SignUpForAppleMusicView.swift in Sources */,
 				59FCBA582A3D06D700FD6BB2 /* SongBackgroundView.swift in Sources */,
 				59FCBA4A2A3C00CE00FD6BB2 /* SongView.swift in Sources */,
 				59FCBA562A3D048E00FD6BB2 /* FloatingClouds.swift in Sources */,
@@ -410,6 +438,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		590A4F9B2A3E927000FCF5AE /* XCRemoteSwiftPackageReference "Defaults" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/Defaults.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		59557DA72A3D66A900ED1B74 /* XCRemoteSwiftPackageReference "SwiftfulLoadingIndicators" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftfulThinking/SwiftfulLoadingIndicators.git";
@@ -437,6 +473,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		590A4F9C2A3E927000FCF5AE /* Defaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 590A4F9B2A3E927000FCF5AE /* XCRemoteSwiftPackageReference "Defaults" */;
+			productName = Defaults;
+		};
 		59557DA82A3D66A900ED1B74 /* SwiftfulLoadingIndicators */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 59557DA72A3D66A900ED1B74 /* XCRemoteSwiftPackageReference "SwiftfulLoadingIndicators" */;

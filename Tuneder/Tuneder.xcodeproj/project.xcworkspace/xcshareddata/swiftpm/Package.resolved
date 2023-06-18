@@ -10,6 +10,15 @@
       }
     },
     {
+      "identity" : "defaults",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sindresorhus/Defaults.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "bd14dae265091c5fb1ba1123a52861ae9f2ede84"
+      }
+    },
+    {
       "identity" : "musadorakit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/rryam/MusadoraKit.git",

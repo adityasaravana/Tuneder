@@ -9,17 +9,17 @@ import SwiftUI
 import MusicKit
 import ColorKit
 
-//struct SongBackgroundView: View {
-//    var song: Song
-//    
+struct SongBackgroundView: View {
+    var song: Song
+    @State var colors: [Color] = []
 //    func getColorsFromArtwork() -> [Color] {
-//        
+//        Task {
 //            let previewcolors: [Color] = [.red, .yellow, .cyan, .blue, .white]
 //            do {
 //                guard let artworkURL = song.artwork?.url(width: 640, height: 640) else { return previewcolors }
-//                
-//                let (imageData, _) = try await URLSession.shared.data(from: artworkURL)
-//                
+//
+//                let (imageData, _) = try URLSession.shared.data(from: artworkURL)
+//
 //                guard let image = UIImage(data: imageData) else { return previewcolors }
 //
 //                return try image.dominantColors().map { Color(uiColor: $0) }
@@ -27,14 +27,44 @@ import ColorKit
 //                print(error)
 //                return previewcolors
 //            }
-//        
+//        }
 //    }
-//    
-//    var body: some View {
-//        FloatingCloudsView(colors: getColorsFromArtwork())
-//            
-//    }
-//}
+//
+    
+    
+    
+    var body: some View {
+//        FloatingCloudsView(colors: colors).onAppear {
+//            Task {
+//                do {
+//                    guard let artworkURL = song.artwork?.url(width: 640, height: 640) else { return }
+//
+//                    let (imageData, _) = try await URLSession.shared.data(from: artworkURL)
+//
+//                    guard let image = UIImage(data: imageData) else { return }
+//
+//                    self.colors = try image.dominantColors().map { Color(uiColor: $0) }
+//                } catch {
+//                    print(error)
+//                }
+//            }
+//        }
+        AnimatedBackground(colors: colors).task {
+            do {
+                guard let artworkURL = song.artwork?.url(width: 640, height: 640) else { return }
+                
+                let (imageData, _) = try await URLSession.shared.data(from: artworkURL)
+                
+                guard let image = UIImage(data: imageData) else { return }
+
+                self.colors = try image.dominantColors().map { Color(uiColor: $0) }
+            } catch {
+                print(error)
+            }
+        }
+            
+    }
+}
 
 struct AnimatedBackground: View {
     @State private var start = UnitPoint(x: 0, y: 0)
