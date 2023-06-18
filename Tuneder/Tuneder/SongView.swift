@@ -50,10 +50,17 @@ struct SongView: View {
                     Spacer()
                     HStack {
                         VStack(alignment: .leading) {
-                            Text("\(song.title)")
-                                .foregroundColor(.white)
-                                .font(.title)
-                                .bold()
+                            HStack {
+                                Text("\(song.title)")
+                                    .foregroundColor(.white)
+                                    .font(.title)
+                                    .bold()
+                                
+                                if song.contentRating == .explicit {
+                                    Image(systemName: "e.square.fill")
+                                        .foregroundColor(.gray)
+                                }
+                            }
                             Text(song.artistName)
                                 .foregroundColor(.white)
                                 .font(.subheadline)
@@ -62,6 +69,7 @@ struct SongView: View {
                                 .font(.subheadline)
                                 .foregroundColor(.gray)
                         }
+                        
                         Spacer()
                         Button(action: {
                             if isPlaying {
@@ -108,6 +116,8 @@ struct SongView: View {
                             if swipeStatus == .like {
                                 DispatchQueue.main.async {
                                     print("SONG LIKED SONG LIKED SONG LIKED SONG LIKED SONG LIKED SONG LIKED SONG LIKED SONG LIKED")
+                                    let libraryHandler = MusicLibraryHandler()
+                                    libraryHandler.addSong(song.id.rawValue)
                                 }
                             }
                         } else {

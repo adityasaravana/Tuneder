@@ -20,11 +20,9 @@ struct ContentView: View {
     private func searchMusic() {
         Task {
             do {
-                var request = MusicCatalogChartsRequest(genre: nil, types: [Song.self])
-//                let request = MusicCatalogSearchRequest(term: "taylor swift", types: [Song.self])
+                let request = MusicCatalogChartsRequest(genre: nil, types: [Song.self])
                 let response = try await request.response()
                 
-//
                 searchResults = response.songCharts.first?.items.reversed().reversed() ?? []
                 
             } catch {
