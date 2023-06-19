@@ -13,7 +13,6 @@ import SwiftfulLoadingIndicators
 import Defaults
 
 struct ContentView: View {
-    @State private var searchText = ""
     @State private var queue: MusicItemCollection<Song> = []
     //    @State var lastLikedSongID = ""
     
@@ -23,10 +22,13 @@ struct ContentView: View {
         }
     }
     
+    @State var settingsPresented = false
+    
     private func getMusic() {
         Task {
             do {
                 let request = MusicCatalogChartsRequest(genre: nil, types: [Song.self])
+                
                 let response = try await request.response()
                 
                 queue = response.songCharts.first?.items.reversed().reversed() ?? []
@@ -75,25 +77,32 @@ struct ContentView: View {
                                     
                                 }
                                 Spacer()
-                                HStack {
-                                    Button {
-                                        
-                                    } label: {
-                                        Image(systemName: "questionmark.circle.fill").foregroundColor(.white).padding().background(.ultraThinMaterial, in: Circle())
-                                    }
-                                    Spacer()
-                                    Button {
-                                        
-                                    } label: {
-                                        Image(systemName: "gear").foregroundColor(.white).padding().background(.ultraThinMaterial, in: Circle())
-                                    }
-                                }.padding(.horizontal)
+                                
+                                
+                                #warning("ISSUE: These commented-out views are buttons that open a Settings view and a tutorial. As of right now, the settings view stores its values just fine, but I haven't implemented anything to actually not show explicit songs and content when you flip the switch in settings, and haven't got any idea how to make a tutorial. Help would be greatly appreciated.")
+//                                HStack {
+//                                    Button {
+//
+//                                    } label: {
+//                                        Image(systemName: "questionmark.circle.fill").foregroundColor(.white).padding().background(.ultraThinMaterial, in: Circle())
+//                                    }
+//                                    Spacer()
+//                                    Button {
+//                                        settingsPresented = true
+//                                    } label: {
+//                                        Image(systemName: "gear").foregroundColor(.white).padding().background(.ultraThinMaterial, in: Circle())
+//                                    }
+//                                }.padding(.horizontal)
+                                
+                                
+                                
+                                
+                                
                             }.padding()
                             
                             
 //                            Group {
                                 SongView(queue: $queue, song: song, onRemove: { removedSong in
-                                    
                                     queue = MusicItemCollection(queue.dropLast())
                                 })
                                 .padding()
@@ -105,7 +114,7 @@ struct ContentView: View {
                     } else {
                         LoadingIndicator(animation: .text, size: .large).foregroundColor(.black).onAppear {
                             checkAuthStatus()
-                            getMusic()
+//
                         }
                     }
                 }
@@ -116,6 +125,10 @@ struct ContentView: View {
         .onAppear {
             self.musicAccessEnabled = Defaults[.musicAccessEnabled]
             checkAuthStatus()
+            getMusic()
+        }
+        .sheet(isPresented: $settingsPresented) {
+            SettingsView()
         }
     }
 }

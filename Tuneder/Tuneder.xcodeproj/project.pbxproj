@@ -25,6 +25,7 @@
 		59557DAB2A3D691100ED1B74 /* FluidMusicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59557DAA2A3D691100ED1B74 /* FluidMusicButton.swift */; };
 		59557DAE2A3E559D00ED1B74 /* MusadoraKit in Frameworks */ = {isa = PBXBuildFile; productRef = 59557DAD2A3E559D00ED1B74 /* MusadoraKit */; };
 		59557DB02A3E559D00ED1B74 /* MusadoraLabsKit in Frameworks */ = {isa = PBXBuildFile; productRef = 59557DAF2A3E559D00ED1B74 /* MusadoraLabsKit */; };
+		59EDCBDF2A3FFA1500FA6747 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EDCBDE2A3FFA1500FA6747 /* SettingsView.swift */; };
 		59FCBA4A2A3C00CE00FD6BB2 /* SongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FCBA492A3C00CE00FD6BB2 /* SongView.swift */; };
 		59FCBA542A3CFFC800FD6BB2 /* Song.backgroundColorSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FCBA532A3CFFC800FD6BB2 /* Song.backgroundColorSwiftUI.swift */; };
 		59FCBA562A3D048E00FD6BB2 /* FloatingClouds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FCBA552A3D048E00FD6BB2 /* FloatingClouds.swift */; };
@@ -48,6 +49,7 @@
 		59557DA32A3D2D4A00ED1B74 /* SongViewGuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongViewGuts.swift; sourceTree = "<group>"; };
 		59557DA52A3D63C300ED1B74 /* AVPlayer.stop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPlayer.stop.swift; sourceTree = "<group>"; };
 		59557DAA2A3D691100ED1B74 /* FluidMusicButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FluidMusicButton.swift; sourceTree = "<group>"; };
+		59EDCBDE2A3FFA1500FA6747 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		59FCBA492A3C00CE00FD6BB2 /* SongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongView.swift; sourceTree = "<group>"; };
 		59FCBA512A3C30A100FD6BB2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59FCBA532A3CFFC800FD6BB2 /* Song.backgroundColorSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.backgroundColorSwiftUI.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				5909A43C2A3BFB21006B5B6D /* TunederApp.swift */,
 				590A4FA12A3E970100FCF5AE /* MusicAccessNotEnabledView.swift */,
 				590A4FAB2A3EA40F00FCF5AE /* SignUpForAppleMusicView.swift */,
+				59EDCBDE2A3FFA1500FA6747 /* SettingsView.swift */,
 				5909A4402A3BFB22006B5B6D /* Assets.xcassets */,
 				5909A4422A3BFB22006B5B6D /* Preview Content */,
 			);
@@ -222,6 +225,7 @@
 				59557DA62A3D63C300ED1B74 /* AVPlayer.stop.swift in Sources */,
 				59FCBA542A3CFFC800FD6BB2 /* Song.backgroundColorSwiftUI.swift in Sources */,
 				5909A43D2A3BFB21006B5B6D /* TunederApp.swift in Sources */,
+				59EDCBDF2A3FFA1500FA6747 /* SettingsView.swift in Sources */,
 				59557DA42A3D2D4A00ED1B74 /* SongViewGuts.swift in Sources */,
 				59557DAB2A3D691100ED1B74 /* FluidMusicButton.swift in Sources */,
 				590A4FAC2A3EA40F00FCF5AE /* SignUpForAppleMusicView.swift in Sources */,

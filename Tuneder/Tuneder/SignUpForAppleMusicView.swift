@@ -8,7 +8,6 @@
 import SwiftUI
 import StoreKit
 
-#warning("After significant downloads, switch to letting people sign up in-app, so you can earn commisions (search up apple affiliate program, you'll find it)")
 struct SignUpForAppleMusicView: View {
     var body: some View {
         VStack {

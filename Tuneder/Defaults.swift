@@ -15,4 +15,7 @@ extension Defaults.Keys {
     static let musicAccessEnabled = Key<Bool>("musicAccessEnabled", default: false)
     static let needsToSubscribe = Key<Bool>("needsToSubscribe", default: false)
     static let onboarded = Key<Bool>("onboarded", default: false)
+    
+    static let explicitAllowed = Key<Bool>("explicitAllowed", default: true)
+    static let showBlockExplicitText = Key<Bool>("showBlockExplicitText", default: true)
 }

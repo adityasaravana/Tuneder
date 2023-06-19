@@ -8,6 +8,7 @@
 import SwiftUI
 import MusicKit
 import AVFoundation
+import MusadoraKit
 
 enum LikeDislike: Int {
     case like, dislike, none
@@ -37,6 +38,29 @@ struct SongView: View {
         gesture.translation.width / geometry.size.width
     }
     
+    
+    func updateRecommendations() {
+        Task {
+            let id = lastLikedSong!.id
+            #warning("ISSUE: Take a look at optional chaining here, and show alerts when something goes wrong instead of using ! everywhere")
+            
+            let song = try await MCatalog.song(id: id, fetch: [.artists])
+            
+            let artistID = song.artists!.first!.id
+            
+            let artist = try await MCatalog.artist(id: artistID, fetch: [.similarArtists, .topSongs])
+            
+            let relatedArtistID = artist.similarArtists!.first!.id
+            
+            let relatedArtist = try await MCatalog.artist(id: relatedArtistID, fetch: [.topSongs])
+            
+            var songsToQueue = artist.topSongs
+            songsToQueue! += relatedArtist.topSongs!
+            
+            #warning("ISSUE: For some reason, the += operator on MusicItemCollection acts more like =. It just replaces the original array with the songs it was supposed to add.")
+            queue += songsToQueue!
+        }
+    }
     
     
     var body: some View {
@@ -119,6 +143,7 @@ struct SongView: View {
                                     let libraryHandler = MusicLibraryHandler()
                                     libraryHandler.addSong(song.id.rawValue)
                                     lastLikedSong = song
+                                    updateRecommendations()
                                 }
                             }
                         } else {
