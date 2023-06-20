@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// A view that the user sees when they haven't enabled access to Apple Music.
 struct MusicAccessNotEnabledView: View {
     var body: some View {
         VStack {

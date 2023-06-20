@@ -8,6 +8,7 @@
 import SwiftUI
 import StoreKit
 
+/// A view the user sees when they haven't signed up for an Apple Music subscription, required to use MusicKit (I think?).
 struct SignUpForAppleMusicView: View {
     var body: some View {
         VStack {

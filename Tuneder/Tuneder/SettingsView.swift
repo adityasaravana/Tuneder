@@ -8,6 +8,7 @@
 import SwiftUI
 import Defaults
 
+/// This view isn't in use yet, but will be. I'd like to add settings to block explicit content, and this is where it'll go. Data is stored using Defaults (see Defaults.swift).
 struct SettingsView: View {
     @State var explicitContentAllowed = true {
         didSet {

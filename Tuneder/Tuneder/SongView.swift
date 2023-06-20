@@ -10,6 +10,9 @@ import MusicKit
 import AVFoundation
 import MusadoraKit
 
+
+/// This view is the tile for each song, with the song's details, album art, and an audio player that plays Apple Music's preview for it.
+
 enum LikeDislike: Int {
     case like, dislike, none
 }
@@ -40,9 +43,10 @@ struct SongView: View {
     
     
     func updateRecommendations() {
+        #warning("TODO: This is the recommendation system as of right now, and there are serious flaws. An actual recommendation system would be nice, or a way to get similar songs.")
         Task {
             let id = lastLikedSong!.id
-            #warning("ISSUE: Take a look at optional chaining here, and show alerts when something goes wrong instead of using ! everywhere")
+            #warning("TODO: Take a look at optional chaining here, and show alerts when something goes wrong instead of using ! everywhere")
             
             let song = try await MCatalog.song(id: id, fetch: [.artists])
             
@@ -57,7 +61,7 @@ struct SongView: View {
             var songsToQueue = artist.topSongs
             songsToQueue! += relatedArtist.topSongs!
             
-            #warning("ISSUE: For some reason, the += operator on MusicItemCollection acts more like =. It just replaces the original array with the songs it was supposed to add.")
+            #warning("TODO: For some reason, the += operator on MusicItemCollection acts more like =. It just replaces the original array with the songs it was supposed to add.")
             queue += songsToQueue!
         }
     }
@@ -112,7 +116,7 @@ struct SongView: View {
                 .padding()
             }
             .cornerRadius(20)
-            .animation(.interactiveSpring())
+            .animation(.interactiveSpring(), value: UUID())
             .offset(x: translation.width, y: 0)
             .rotationEffect(.degrees(Double(translation.width / geometry.size.width) * 25), anchor: .bottom)
             .gesture(
@@ -197,5 +201,61 @@ struct ButtonView_Previews: PreviewProvider {
     static var previews: some View {
         ButtonView(isPlaying: false)
         ButtonView(isPlaying: true)
+    }
+}
+
+struct SongImageView: View {
+    var song: Song
+    var geometry: GeometryProxy
+    var body: some View {
+        AsyncImage(url: song.artwork?.url(width: 700, height: 700)) { image in
+            image
+            
+                .resizable()
+                .overlay (
+                    Rectangle()
+                        .fill (
+                            LinearGradient(gradient: Gradient(colors: [.clear, .black]),
+                                           startPoint: .center, endPoint: .bottom)
+                        )
+                        .clipped()
+                )
+                .aspectRatio(contentMode: .fill)
+            //                .frame(width: geometry.size.width, height: geometry.size.height * 0.75)
+            //                .clipped()
+            
+            
+        } placeholder: {
+            Color.gray
+        }
+    }
+}
+
+struct SwipeTextView: View {
+    var swipeStatus: LikeDislike
+    var body: some View {
+        if swipeStatus == .like {
+            Text("SAVE")
+                .font(.headline)
+                .padding()
+                .cornerRadius(10)
+                .foregroundColor(Color.green)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.green, lineWidth: 3.0)
+                ).padding(24)
+                .rotationEffect(Angle.degrees(-45))
+        } else if swipeStatus == .dislike {
+            Text("SKIP")
+                .font(.headline)
+                .padding()
+                .cornerRadius(10)
+                .foregroundColor(Color.red)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.red, lineWidth: 3.0)
+                ).padding(.top, 45)
+                .rotationEffect(Angle.degrees(45))
+        }
     }
 }

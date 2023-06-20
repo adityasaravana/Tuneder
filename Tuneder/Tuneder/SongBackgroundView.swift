@@ -9,46 +9,13 @@ import SwiftUI
 import MusicKit
 import ColorKit
 
+/// A nice background for SongView, that takes the dominant colors of the album artwork using ColorKit and feeds it to an animated background.
+
 struct SongBackgroundView: View {
     var song: Song
     @State var colors: [Color] = []
-//    func getColorsFromArtwork() -> [Color] {
-//        Task {
-//            let previewcolors: [Color] = [.red, .yellow, .cyan, .blue, .white]
-//            do {
-//                guard let artworkURL = song.artwork?.url(width: 640, height: 640) else { return previewcolors }
-//
-//                let (imageData, _) = try URLSession.shared.data(from: artworkURL)
-//
-//                guard let image = UIImage(data: imageData) else { return previewcolors }
-//
-//                return try image.dominantColors().map { Color(uiColor: $0) }
-//            } catch {
-//                print(error)
-//                return previewcolors
-//            }
-//        }
-//    }
-//
-    
-    
     
     var body: some View {
-//        FloatingCloudsView(colors: colors).onAppear {
-//            Task {
-//                do {
-//                    guard let artworkURL = song.artwork?.url(width: 640, height: 640) else { return }
-//
-//                    let (imageData, _) = try await URLSession.shared.data(from: artworkURL)
-//
-//                    guard let image = UIImage(data: imageData) else { return }
-//
-//                    self.colors = try image.dominantColors().map { Color(uiColor: $0) }
-//                } catch {
-//                    print(error)
-//                }
-//            }
-//        }
         AnimatedBackground(colors: colors).task {
             do {
                 guard let artworkURL = song.artwork?.url(width: 640, height: 640) else { return }

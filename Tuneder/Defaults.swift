@@ -7,11 +7,9 @@
 
 import Defaults
 
+// This is the data storage for all the settings and user preferences of the app, using the Defaults package. Find out more at the GitHub repository: https://github.com/sindresorhus/Defaults
+
 extension Defaults.Keys {
- // static let quality = Key<Double>("quality", default: 0.8)
-   ///            ^                        ^                         ^                          ^
-   ///           Key                    Type          UserDefaults name   Default value
- 
     static let musicAccessEnabled = Key<Bool>("musicAccessEnabled", default: false)
     static let needsToSubscribe = Key<Bool>("needsToSubscribe", default: false)
     static let onboarded = Key<Bool>("onboarded", default: false)

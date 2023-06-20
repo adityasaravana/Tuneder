@@ -7,6 +7,7 @@
 
 import MediaPlayer
 
+/// This just makes it nicer to add songs to the user's library when they swipe right
 struct MusicLibraryHandler {
     var library: MPMediaLibrary
     

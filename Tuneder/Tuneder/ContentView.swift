@@ -12,9 +12,45 @@ import StoreKit
 import SwiftfulLoadingIndicators
 import Defaults
 
+enum GenreSelection: CaseIterable, Identifiable, Equatable {
+#warning("TODO: I'd like to have a lot more genres available for Tuneder. If there's a genre you'd like to see added, add it to this enum and add the MusicKit ID of the genre, along with a name, in ContentView.")
+    case none
+    case country
+    case pop
+    case rock
+    case hiphop
+    
+    var id: Self { self }
+    
+    var name: String {
+        switch self {
+        case .none:
+            return "None"
+        case .country:
+            return "Country"
+        case .pop:
+            return "Pop"
+        case .rock:
+            return "Rock"
+        case .hiphop:
+            return "Hip-Hop/Rap"
+        }
+    }
+}
+
+actor GenreActor {
+    var genre: Genre? = nil
+    
+    func set(_ newValue: Genre?) {
+        genre = newValue
+    }
+}
+
 struct ContentView: View {
     @State private var queue: MusicItemCollection<Song> = []
     //    @State var lastLikedSongID = ""
+    @State var genreSelection: GenreSelection = .none
+    
     
     @State var musicAccessEnabled = false {
         didSet {
@@ -24,14 +60,62 @@ struct ContentView: View {
     
     @State var settingsPresented = false
     
+    func genreID(_ genreSelection: GenreSelection) async -> Genre? {
+        var id: MusicItemID? = nil
+        
+        #warning("TODO: There's gotta be a neater and easier way to add more genres than adding it to two different switch statements each time.")
+        switch genreSelection {
+        case .country:
+            id = "6"
+        case .pop:
+            id = "14"
+        case .rock:
+            id = "21"
+        case .hiphop:
+            id = "18"
+        case .none:
+            return nil
+        }
+        
+        let staticid = id
+        
+        let genreActor: GenreActor = GenreActor()
+        
+        if !staticid.isNil {
+            
+            do {
+                let genreRequest = try await MCatalog.genre(id: staticid!)
+                await genreActor.set(genreRequest)
+            } catch {
+#warning("TODO: Error's aren't handled well all over the app, that's something I'd like to fix.")
+                print(error.localizedDescription)
+                return nil
+            }
+        }
+        return await genreActor.genre
+    }
+    
     private func getMusic() {
         Task {
             do {
-                let request = MusicCatalogChartsRequest(genre: nil, types: [Song.self])
-                
+                let request = await MusicCatalogChartsRequest(genre: genreID(genreSelection), types: [Song.self])
+
                 let response = try await request.response()
-                
+
                 queue = response.songCharts.first?.items.reversed().reversed() ?? []
+                
+                /// This code fetches the genres and ids of songs that that you enter in searchTerm, useful for adding more genres (See GenreSelection)
+                
+//                let searchTerm = "Taylor Swift"
+//
+//                let songSearch = try await MCatalog.search(for: searchTerm, types: [.songs], limit: 3)
+//                for song in songSearch.songs {
+//                    let songDetailed = try await MCatalog.song(id: song.id, fetch: [.genres])
+//
+//                    for genre in songDetailed.genres! {
+//                        print("⚠️⚠️⚠️⚠️⚠️⚠️ GENRE NAME: \(genre.name), ID: \(genre.id) ⚠️⚠️⚠️⚠️⚠️⚠️")
+//                    }
+//                }
                 
             } catch {
                 print("Error searching for music: \(error.localizedDescription)")
@@ -72,27 +156,33 @@ struct ContentView: View {
                                         .bold()
                                         .font(.subheadline)
                                         .foregroundColor(.white)
-                                        .padding(.leading)
+                                        
                                     Spacer()
-                                    
-                                }
+                                    Button("Reset") {
+                                        withAnimation {
+                                            genreSelection = .none
+                                            getMusic()
+                                        }
+                                    }
+                                }.padding(.horizontal)
                                 Spacer()
+                               
                                 
                                 
-                                #warning("ISSUE: These commented-out views are buttons that open a Settings view and a tutorial. As of right now, the settings view stores its values just fine, but I haven't implemented anything to actually not show explicit songs and content when you flip the switch in settings, and haven't got any idea how to make a tutorial. Help would be greatly appreciated.")
-//                                HStack {
-//                                    Button {
-//
-//                                    } label: {
-//                                        Image(systemName: "questionmark.circle.fill").foregroundColor(.white).padding().background(.ultraThinMaterial, in: Circle())
-//                                    }
-//                                    Spacer()
-//                                    Button {
-//                                        settingsPresented = true
-//                                    } label: {
-//                                        Image(systemName: "gear").foregroundColor(.white).padding().background(.ultraThinMaterial, in: Circle())
-//                                    }
-//                                }.padding(.horizontal)
+#warning("TODO: These commented-out views are buttons that open a Settings view and a tutorial. As of right now, the settings view stores its values just fine (see Defaults.swift), but I haven't implemented anything to actually not show explicit songs and content when you flip the switch in settings, and haven't got any idea how to make a tutorial. Help would be greatly appreciated.")
+                                //                                HStack {
+                                //                                    Button {
+                                //
+                                //                                    } label: {
+                                //                                        Image(systemName: "questionmark.circle.fill").foregroundColor(.white).padding().background(.ultraThinMaterial, in: Circle())
+                                //                                    }
+                                //                                    Spacer()
+                                //                                    Button {
+                                //                                        settingsPresented = true
+                                //                                    } label: {
+                                //                                        Image(systemName: "gear").foregroundColor(.white).padding().background(.ultraThinMaterial, in: Circle())
+                                //                                    }
+                                //                                }.padding(.horizontal)
                                 
                                 
                                 
@@ -101,26 +191,41 @@ struct ContentView: View {
                             }.padding()
                             
                             
-//                            Group {
-                                SongView(queue: $queue, song: song, onRemove: { removedSong in
-                                    queue = MusicItemCollection(queue.dropLast())
-                                })
-                                .padding()
-                                .frame(width: 380, height: 380)
-                                .animation(.spring())
-                                
-//                            }
+                            //                            Group {
+                            SongView(queue: $queue, song: song, onRemove: { removedSong in
+                                queue = MusicItemCollection(queue.dropLast())
+                            })
+                            .padding()
+                            .frame(width: 380, height: 380)
+                            .animation(.spring(), value: UUID())
+                            
+                            //                            }
+                        }
+                        VStack {
+                            Spacer()
+                            VStack {
+                                Text("Genre Preference").foregroundColor(.white).bold()
+                                Picker("Genre", selection: $genreSelection) {
+                                    ForEach(GenreSelection.allCases) { genre in
+                                        Text(genre.name)
+                                    }
+                                }.padding().background(.ultraThinMaterial).cornerRadius(25)
+                            }
                         }
                     } else {
                         LoadingIndicator(animation: .text, size: .large).foregroundColor(.black).onAppear {
                             checkAuthStatus()
-//
+                            //
                         }
                     }
                 }
             } else {
                 MusicAccessNotEnabledView()
             }
+        }
+        .onChange(of: genreSelection) { newValue in
+            queue = []
+            getMusic()
         }
         .onAppear {
             self.musicAccessEnabled = Defaults[.musicAccessEnabled]
