@@ -10,6 +10,7 @@ import StoreKit
 
 /// A view the user sees when they haven't signed up for an Apple Music subscription, required to use MusicKit (I think?).
 struct SignUpForAppleMusicView: View {
+    @Environment(\.openURL) var openURL
     var body: some View {
         VStack {
             HStack {
@@ -31,9 +32,7 @@ struct SignUpForAppleMusicView: View {
             
             HStack {
                 Button {
-                    if let url = URL(string: "https://www.apple.com/apple-music/") {
-                        UIApplication.shared.open(url)
-                    }
+                    openURL(URL(string: "https://www.apple.com/apple-music/")!)
                 } label: {
                     Text("Sign Up For Apple Music")
                         .fontWeight(.bold)
