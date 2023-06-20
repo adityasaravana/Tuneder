@@ -1,4 +1,7 @@
 # Tuneder
+<a href="https://www.buymeacoffee.com/adityasaravana"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=adityasaravana&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" /></a>
+<br>
+
 Tuneder is the successor to SoundSieve (https://github.com/wilzh40/SoundSieve), an open-source iOS app that helps Apple Music users discover new songs with a Tinder-like UI. 
 
 (Make sure to turn on sound)
@@ -10,3 +13,9 @@ Tuneder's still in a very early testing phase, and is in no way ready for the Ap
 <a href="https://github.com/adityasaravana/Tuneder/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=adityasaravana/Tuneder" />
 </a>
+
+
+
+<br>
+<br>
+
