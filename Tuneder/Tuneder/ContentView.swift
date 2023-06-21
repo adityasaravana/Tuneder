@@ -12,31 +12,7 @@ import StoreKit
 import SwiftfulLoadingIndicators
 import Defaults
 
-enum GenreSelection: CaseIterable, Identifiable, Equatable {
-#warning("TODO: I'd like to have a lot more genres available for Tuneder. If there's a genre you'd like to see added, add it to this enum and add the MusicKit ID of the genre, along with a name, in ContentView.")
-    case none
-    case country
-    case pop
-    case rock
-    case hiphop
-    
-    var id: Self { self }
-    
-    var name: String {
-        switch self {
-        case .none:
-            return "None"
-        case .country:
-            return "Country"
-        case .pop:
-            return "Pop"
-        case .rock:
-            return "Rock"
-        case .hiphop:
-            return "Hip-Hop/Rap"
-        }
-    }
-}
+
 
 actor GenreActor {
     var genre: Genre? = nil
@@ -60,45 +36,12 @@ struct ContentView: View {
     
     @State var settingsPresented = false
     
-    func genreID(_ genreSelection: GenreSelection) async -> Genre? {
-        var id: MusicItemID? = nil
-        
-        #warning("TODO: There's gotta be a neater and easier way to add more genres than adding it to two different switch statements each time.")
-        switch genreSelection {
-        case .country:
-            id = "6"
-        case .pop:
-            id = "14"
-        case .rock:
-            id = "21"
-        case .hiphop:
-            id = "18"
-        case .none:
-            return nil
-        }
-        
-        let staticid = id
-        
-        let genreActor: GenreActor = GenreActor()
-        
-        if !staticid.isNil {
-            
-            do {
-                let genreRequest = try await MCatalog.genre(id: staticid!)
-                await genreActor.set(genreRequest)
-            } catch {
-#warning("TODO: Error's aren't handled well all over the app, that's something I'd like to fix.")
-                print(error.localizedDescription)
-                return nil
-            }
-        }
-        return await genreActor.genre
-    }
+    
     
     private func getMusic() {
         Task {
             do {
-                let request = await MusicCatalogChartsRequest(genre: genreID(genreSelection), types: [Song.self])
+                let request = await MusicCatalogChartsRequest(genre: genreSelection.genreData.catalogData(), types: [Song.self])
 
                 let response = try await request.response()
 
@@ -207,7 +150,7 @@ struct ContentView: View {
                                 Text("Genre Preference").foregroundColor(.white).bold()
                                 Picker("Genre", selection: $genreSelection) {
                                     ForEach(GenreSelection.allCases) { genre in
-                                        Text(genre.name)
+                                        Text(genre.genreData.name)
                                     }
                                 }.padding().background(.ultraThinMaterial).cornerRadius(25)
                             }
