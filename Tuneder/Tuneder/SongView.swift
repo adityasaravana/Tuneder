@@ -19,7 +19,7 @@ enum LikeDislike: Int {
 
 struct SongView: View {
     //    @Binding var lastLikedSongID: String
-    @Binding var queue: MusicItemCollection<Song>
+    @Binding var queue: [Song]
     @State var player: AVPlayer?
     @State var isPlaying = false
     
@@ -46,7 +46,6 @@ struct SongView: View {
         #warning("TODO: This is the recommendation system as of right now, and there are serious flaws. An actual recommendation system would be nice, or a way to get similar songs.")
         Task {
             let id = lastLikedSong!.id
-            #warning("TODO: Take a look at optional chaining here, and show alerts when something goes wrong instead of using ! everywhere")
             
             let song = try await MCatalog.song(id: id, fetch: [.artists])
             
