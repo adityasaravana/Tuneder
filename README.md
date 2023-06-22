@@ -1,6 +1,5 @@
 # Tuneder
-<a href="https://www.buymeacoffee.com/adityasaravana"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=adityasaravana&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" /></a>
-<br>
+<script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Support Me on Ko-fi', '#29abe0', 'F1F6MHTT3');kofiwidget2.draw();</script> 
 
 Tuneder is the successor to SoundSieve (https://github.com/wilzh40/SoundSieve), an open-source iOS app that helps Apple Music users discover new songs with a Tinder-like UI. 
 
