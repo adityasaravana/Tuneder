@@ -7,7 +7,6 @@
 
 import Foundation
 import MusadoraKit
-import MusicKit
 
 struct GenreData: Codable {
     var name: String

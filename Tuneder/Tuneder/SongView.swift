@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import MusicKit
 import AVFoundation
 import MusadoraKit
 
@@ -194,13 +193,6 @@ struct ButtonView: View {
         .padding()
         .background(.thinMaterial)
         .cornerRadius(CGFloat(Int.max))
-    }
-}
-
-struct ButtonView_Previews: PreviewProvider {
-    static var previews: some View {
-        ButtonView(isPlaying: false)
-        ButtonView(isPlaying: true)
     }
 }
 

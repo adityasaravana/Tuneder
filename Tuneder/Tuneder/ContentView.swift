@@ -14,13 +14,6 @@ import Defaults
 
 
 
-actor GenreActor {
-    var genre: Genre? = nil
-    
-    func set(_ newValue: Genre?) {
-        genre = newValue
-    }
-}
 
 struct ContentView: View {
     @State private var queue: MusicItemCollection<Song> = []

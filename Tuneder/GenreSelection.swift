@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import MusicKit
 import MusadoraKit
 
 enum GenreSelection: CaseIterable, Identifiable, Equatable {
