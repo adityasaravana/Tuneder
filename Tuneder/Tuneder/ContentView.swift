@@ -12,11 +12,8 @@ import StoreKit
 import SwiftfulLoadingIndicators
 import Defaults
 
-
-
-
 struct ContentView: View {
-    @State private var queue: MusicItemCollection<Song> = []
+    @State private var queue: [Song] = []
     //    @State var lastLikedSongID = ""
     @State var genreSelection: GenreSelection = .none
     
@@ -83,60 +80,7 @@ struct ContentView: View {
             if musicAccessEnabled {
                 ZStack {
                     if queue.count != 0 {
-                        ForEach(self.queue, id: \.self) { song in
-                            SongBackgroundView(song: song)
-                            
-                            VStack {
-                                HStack {
-                                    Text("Tuneder".uppercased())
-                                        .bold()
-                                        .font(.subheadline)
-                                        .foregroundColor(.white)
-                                        
-                                    Spacer()
-                                    Button("Reset") {
-                                        withAnimation {
-                                            genreSelection = .none
-                                            getMusic()
-                                        }
-                                    }
-                                }.padding(.horizontal)
-                                Spacer()
-                               
-                                
-                                
-#warning("TODO: These commented-out views are buttons that open a Settings view and a tutorial. As of right now, the settings view stores its values just fine (see Defaults.swift), but I haven't implemented anything to actually not show explicit songs and content when you flip the switch in settings, and haven't got any idea how to make a tutorial. Help would be greatly appreciated.")
-                                //                                HStack {
-                                //                                    Button {
-                                //
-                                //                                    } label: {
-                                //                                        Image(systemName: "questionmark.circle.fill").foregroundColor(.white).padding().background(.ultraThinMaterial, in: Circle())
-                                //                                    }
-                                //                                    Spacer()
-                                //                                    Button {
-                                //                                        settingsPresented = true
-                                //                                    } label: {
-                                //                                        Image(systemName: "gear").foregroundColor(.white).padding().background(.ultraThinMaterial, in: Circle())
-                                //                                    }
-                                //                                }.padding(.horizontal)
-                                
-                                
-                                
-                                
-                                
-                            }.padding()
-                            
-                            
-                            //                            Group {
-                            SongView(queue: $queue, song: song, onRemove: { removedSong in
-                                queue = MusicItemCollection(queue.dropLast())
-                            })
-                            .padding()
-                            .frame(width: 380, height: 380)
-                            .animation(.spring(), value: UUID())
-                            
-                            //                            }
-                        }
+                        SongView(queue: $queue, genreSelection: $genreSelection)
                         VStack {
                             Spacer()
                             VStack {
@@ -179,4 +123,3 @@ struct ContentView_Previews: PreviewProvider {
         ContentView(musicAccessEnabled: true)
     }
 }
-
