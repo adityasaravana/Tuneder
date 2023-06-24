@@ -8,7 +8,7 @@
 import SwiftUI
 import MusadoraKit
 
-struct SongView: View {
+struct SongsView: View {
     @Binding var queue: [Song]
     @Binding var genreSelection: GenreSelection
     

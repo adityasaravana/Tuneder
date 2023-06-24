@@ -80,7 +80,7 @@ struct ContentView: View {
             if musicAccessEnabled {
                 ZStack {
                     if queue.count != 0 {
-                        SongView(queue: $queue, genreSelection: $genreSelection)
+                        SongsView(queue: $queue, genreSelection: $genreSelection)
                         VStack {
                             Spacer()
                             VStack {
