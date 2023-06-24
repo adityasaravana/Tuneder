@@ -75,20 +75,6 @@ struct SongPreviewView: View {
                 queue.append(song)
             }
             print("Added recommendations to queue!")
-//            let artistID = song.artists!.first!.id
-//
-//            let artist = try await MCatalog.artist(id: artistID, fetch: [.similarArtists, .topSongs])
-//
-//            let relatedArtistID = artist.similarArtists!.first!.id
-//
-//            let relatedArtist = try await MCatalog.artist(id: relatedArtistID, fetch: [.topSongs])
-//
-//            var songsToQueue = artist.topSongs
-//
-//            songsToQueue! += relatedArtist.topSongs!
-//
-//            #warning("TODO: For some reason, the += operator on MusicItemCollection acts more like =. It just replaces the original array with the songs it was supposed to add.")
-//            queue += songsToQueue!
         }
     }
     
