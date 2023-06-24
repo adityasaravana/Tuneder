@@ -2,8 +2,8 @@
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/F1F6MHTT3)
 
 <strong>
-&nbsp;
-💡 Idea by [Divide-By-0](https://github.com/Divide-By-0/app-ideas-people-would-use).
+<a href="https://github.com/Divide-By-0/app-ideas-people-would-use">💡 Idea by [Divide-By-0]().</a>
+
 </strong>
 <br>
 <br>
