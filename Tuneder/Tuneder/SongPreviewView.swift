@@ -18,7 +18,7 @@ enum LikeDislike: Int {
 
 struct SongPreviewView: View {
     //    @Binding var lastLikedSongID: String
-//    @StateObject var bufferStatus: AVPlayerBufferStatusController
+    //    @StateObject var bufferStatus: AVPlayerBufferStatusController
     @Binding var queue: [Song]
     @State var player: AVPlayer?
     @State var isPlaying = false
@@ -27,6 +27,21 @@ struct SongPreviewView: View {
     @State var swipeStatus: LikeDislike = .none
     
     var song: Song
+//    var playerIsBuffering: Bool {
+//        if let currentItem = self.player?.currentItem {
+//            if currentItem.isPlaybackLikelyToKeepUp {
+//                return false
+//            } else if currentItem.isPlaybackBufferEmpty {
+//                return false
+//            }  else if currentItem.isPlaybackBufferFull {
+//                return true
+//            } else {
+//                return false
+//            }
+//        } else {
+//            return false
+//        }
+//    }
     @State var lastLikedSong: Song? = nil
     
     
