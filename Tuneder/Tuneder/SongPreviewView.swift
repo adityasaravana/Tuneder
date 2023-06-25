@@ -142,6 +142,9 @@ struct SongPreviewView: View {
                 }
                 .padding()
             }
+            .onDisappear {
+                player?.stop()
+            }
             .cornerRadius(20)
             .animation(.interactiveSpring(), value: UUID())
             .offset(x: translation.width, y: 0)
