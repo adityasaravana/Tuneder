@@ -40,8 +40,12 @@ struct SongsView: View {
         }
     }
     
+    private func getIndex(song: Song) -> String {
+        return String(queue.firstIndex(of: song) ?? 0)
+    }
+    
     var body: some View {
-        ForEach(self.queue, id: \.self) { song in
+        ForEach(self.queue.reversed(), id: \.self) { song in
             
             SongBackgroundView(song: song)
             
@@ -90,6 +94,8 @@ struct SongsView: View {
             .padding()
             .frame(width: 380, height: 380)
             .animation(.spring(), value: UUID())
+            
+            Text("Index -- \(getIndex(song: song))")
         }
     }
 }

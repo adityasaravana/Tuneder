@@ -24,6 +24,7 @@
 		59557DA92A3D66A900ED1B74 /* SwiftfulLoadingIndicators in Frameworks */ = {isa = PBXBuildFile; productRef = 59557DA82A3D66A900ED1B74 /* SwiftfulLoadingIndicators */; };
 		59557DAE2A3E559D00ED1B74 /* MusadoraKit in Frameworks */ = {isa = PBXBuildFile; productRef = 59557DAD2A3E559D00ED1B74 /* MusadoraKit */; };
 		59557DB02A3E559D00ED1B74 /* MusadoraLabsKit in Frameworks */ = {isa = PBXBuildFile; productRef = 59557DAF2A3E559D00ED1B74 /* MusadoraLabsKit */; };
+		5961303D2A49349400581E01 /* ModernAVPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = 5961303C2A49349400581E01 /* ModernAVPlayer */; };
 		59B244452A46B2D5003973D3 /* SongsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B244442A46B2D5003973D3 /* SongsView.swift */; };
 		59B244472A46BAFF003973D3 /* AVPlayerBufferStatusController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B244462A46BAFF003973D3 /* AVPlayerBufferStatusController.swift */; };
 		59EDCBDF2A3FFA1500FA6747 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EDCBDE2A3FFA1500FA6747 /* SettingsView.swift */; };
@@ -61,6 +62,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				59557DAE2A3E559D00ED1B74 /* MusadoraKit in Frameworks */,
+				5961303D2A49349400581E01 /* ModernAVPlayer in Frameworks */,
 				59557DB02A3E559D00ED1B74 /* MusadoraLabsKit in Frameworks */,
 				59FCBA5B2A3D078200FD6BB2 /* ColorKit in Frameworks */,
 				59557DA92A3D66A900ED1B74 /* SwiftfulLoadingIndicators in Frameworks */,
@@ -151,6 +153,7 @@
 				59557DAD2A3E559D00ED1B74 /* MusadoraKit */,
 				59557DAF2A3E559D00ED1B74 /* MusadoraLabsKit */,
 				590A4F9C2A3E927000FCF5AE /* Defaults */,
+				5961303C2A49349400581E01 /* ModernAVPlayer */,
 			);
 			productName = Tuneder;
 			productReference = 5909A4392A3BFB21006B5B6D /* Tuneder.app */;
@@ -185,6 +188,7 @@
 				59557DA72A3D66A900ED1B74 /* XCRemoteSwiftPackageReference "SwiftfulLoadingIndicators" */,
 				59557DAC2A3E559D00ED1B74 /* XCRemoteSwiftPackageReference "MusadoraKit" */,
 				590A4F9B2A3E927000FCF5AE /* XCRemoteSwiftPackageReference "Defaults" */,
+				5961303B2A49349400581E01 /* XCRemoteSwiftPackageReference "ModernAVPlayer" */,
 			);
 			productRefGroup = 5909A43A2A3BFB21006B5B6D /* Products */;
 			projectDirPath = "";
@@ -470,6 +474,14 @@
 				kind = branch;
 			};
 		};
+		5961303B2A49349400581E01 /* XCRemoteSwiftPackageReference "ModernAVPlayer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/noreasonprojects/ModernAVPlayer";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		59FCBA592A3D078200FD6BB2 /* XCRemoteSwiftPackageReference "ColorKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Boris-Em/ColorKit.git";
@@ -500,6 +512,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 59557DAC2A3E559D00ED1B74 /* XCRemoteSwiftPackageReference "MusadoraKit" */;
 			productName = MusadoraLabsKit;
+		};
+		5961303C2A49349400581E01 /* ModernAVPlayer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5961303B2A49349400581E01 /* XCRemoteSwiftPackageReference "ModernAVPlayer" */;
+			productName = ModernAVPlayer;
 		};
 		59FCBA5A2A3D078200FD6BB2 /* ColorKit */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -24,7 +24,7 @@ enum GenreSelection: CaseIterable, Identifiable, Equatable {
         
         switch self {
         case .none:
-            name = "None"
+            name = "Recommended"
         case .country:
             name = "Country"
             id = "6"

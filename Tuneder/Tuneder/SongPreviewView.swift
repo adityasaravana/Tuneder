@@ -8,7 +8,7 @@
 import SwiftUI
 import AVFoundation
 import MusadoraKit
-
+import ModernAVPlayer
 
 /// This view is the tile for each song, with the song's details, album art, and an audio player that plays Apple Music's preview for it.
 
@@ -20,8 +20,7 @@ struct SongPreviewView: View {
     //    @Binding var lastLikedSongID: String
     //    @StateObject var bufferStatus: AVPlayerBufferStatusController
     @Binding var queue: [Song]
-    @State var player: AVPlayer?
-    @State var isPlaying = false
+    @State var player: ModernAVPlayer?
     
     @State var translation: CGSize = .zero
     @State var swipeStatus: LikeDislike = .none
@@ -47,7 +46,7 @@ struct SongPreviewView: View {
     
     
     func onRemove() {
-        queue = Array(queue.dropLast())
+        queue = Array(queue.dropFirst())
     }
     
     var thresholdPercentage: CGFloat = 0.5 // when the song has draged 50% the width of the screen in either direction
@@ -85,11 +84,11 @@ struct SongPreviewView: View {
                 }
             }
             
-            print("Recommendations done!")
+            print("Recommendations done \(queue.count)!")
             for song in songsToQueue {
                 queue.append(song)
             }
-            print("Added recommendations to queue!")
+            print("Added recommendations to queue \(queue.count)!")
         }
     }
     
@@ -126,16 +125,17 @@ struct SongPreviewView: View {
                         
                         Spacer()
                         Button(action: {
-                            if isPlaying {
-                                player?.pause()
-                                
-                                isPlaying = false
-                            } else {
+                            
+                            if player?.state == .loaded {
                                 player?.play()
-                                isPlaying = true
+                            } else if player?.state == .paused {
+                                player?.play()
+                            } else if player?.state == .playing {
+                                player?.pause()
                             }
+                            print(player?.state.rawValue)
                         }) {
-                            ButtonView(isPlaying: isPlaying).font(.system(size: 24))
+                            ButtonView(player: $player).font(.system(size: 24))
                         }
                         .padding()
                     }
@@ -191,8 +191,10 @@ struct SongPreviewView: View {
             let url = song.previewAssets?.first?.url
             let playerItem = AVPlayerItem(url: url ?? URL(fileURLWithPath: Bundle.main.path(forResource: "audioTest", ofType: "m4a")!))
             
-            player = AVPlayer(playerItem: playerItem)
-            
+//            player = AVPlayer(playerItem: playerItem)
+            let media = ModernAVPlayerMediaItem(item: playerItem, type: .clip, metadata: .none)
+            player = ModernAVPlayer()
+            player?.load(media: media!, autostart: false)
         }
     }
 }
@@ -214,14 +216,35 @@ struct PlayerView: UIViewRepresentable {
 }
 
 struct ButtonView: View {
-    var isPlaying: Bool
+    
+    @Binding var player: ModernAVPlayer?
     var body: some View {
         VStack {
-            if isPlaying {
-                Image(systemName: "pause.fill")
+            if player.isNil {
+                Image(systemName: "xmark.diamond.fill")
             } else {
-                Image(systemName: "play.fill")
+                switch player!.state {
+                case .buffering:
+                    ProgressView().progressViewStyle(CircularProgressViewStyle())
+                case .failed:
+                    Image(systemName: "xmark.diamond.fill")
+                case .initialization:
+                    ProgressView().progressViewStyle(CircularProgressViewStyle())
+                case .loaded:
+                    Image(systemName: "play.fill")
+                case .loading:
+                    ProgressView().progressViewStyle(CircularProgressViewStyle())
+                case .paused:
+                    Image(systemName: "play.fill")
+                case .playing:
+                    Image(systemName: "pause.fill")
+                case .stopped:
+                    Image(systemName: "xmark.diamond.fill")
+                case .waitingForNetwork:
+                    ProgressView().progressViewStyle(CircularProgressViewStyle())
+                }
             }
+            
         }
         .padding()
         .background(.thinMaterial)
