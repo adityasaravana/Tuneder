@@ -20,29 +20,14 @@ struct SongPreviewView: View {
     //    @Binding var lastLikedSongID: String
     //    @StateObject var bufferStatus: AVPlayerBufferStatusController
     @Binding var queue: [Song]
-    @State var player: ModernAVPlayer?
+    @ObservedObject var player = ModernAVPlayer()
     
     @State var translation: CGSize = .zero
     @State var swipeStatus: LikeDislike = .none
     
     var song: Song
-//    var playerIsBuffering: Bool {
-//        if let currentItem = self.player?.currentItem {
-//            if currentItem.isPlaybackLikelyToKeepUp {
-//                return false
-//            } else if currentItem.isPlaybackBufferEmpty {
-//                return false
-//            }  else if currentItem.isPlaybackBufferFull {
-//                return true
-//            } else {
-//                return false
-//            }
-//        } else {
-//            return false
-//        }
-//    }
-    @State var lastLikedSong: Song? = nil
     
+    @State var lastLikedSong: Song? = nil
     
     
     func onRemove() {
@@ -126,16 +111,16 @@ struct SongPreviewView: View {
                         Spacer()
                         Button(action: {
                             
-                            if player?.state == .loaded {
-                                player?.play()
-                            } else if player?.state == .paused {
-                                player?.play()
-                            } else if player?.state == .playing {
-                                player?.pause()
+                            if player.state == .loaded {
+                                player.play()
+                            } else if player.state == .paused {
+                                player.play()
+                            } else if player.state == .playing {
+                                player.pause()
                             }
-                            print(player?.state.rawValue)
+                            print(player.state.rawValue)
                         }) {
-                            ButtonView(player: $player).font(.system(size: 24))
+                            ButtonView(player: player).font(.system(size: 24))
                         }
                         .padding()
                     }
@@ -143,7 +128,7 @@ struct SongPreviewView: View {
                 .padding()
             }
             .onDisappear {
-                player?.stop()
+                player.stop()
             }
             .cornerRadius(20)
             .animation(.interactiveSpring(), value: UUID())
@@ -165,7 +150,7 @@ struct SongPreviewView: View {
                     }.onEnded { value in
                         // determine snap distance > 0.5 aka half the width of the screen
                         if abs(getGesturePercentage(geometry, from: value)) > thresholdPercentage {
-                            player?.stop()
+                            player.stop()
                             withAnimation {
                                 onRemove()
                             }
@@ -193,8 +178,7 @@ struct SongPreviewView: View {
             
 //            player = AVPlayer(playerItem: playerItem)
             let media = ModernAVPlayerMediaItem(item: playerItem, type: .clip, metadata: .none)
-            player = ModernAVPlayer()
-            player?.load(media: media!, autostart: false)
+            player.load(media: media!, autostart: false)
         }
     }
 }
@@ -216,14 +200,11 @@ struct PlayerView: UIViewRepresentable {
 }
 
 struct ButtonView: View {
+    var player: ModernAVPlayer
     
-    @Binding var player: ModernAVPlayer?
     var body: some View {
         VStack {
-            if player.isNil {
-                Image(systemName: "xmark.diamond.fill")
-            } else {
-                switch player!.state {
+            switch player.context.state {
                 case .buffering:
                     ProgressView().progressViewStyle(CircularProgressViewStyle())
                 case .failed:
@@ -243,8 +224,6 @@ struct ButtonView: View {
                 case .waitingForNetwork:
                     ProgressView().progressViewStyle(CircularProgressViewStyle())
                 }
-            }
-            
         }
         .padding()
         .background(.thinMaterial)
