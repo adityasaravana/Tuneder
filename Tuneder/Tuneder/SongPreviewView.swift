@@ -9,6 +9,7 @@ import SwiftUI
 import AVFoundation
 import MusadoraKit
 import ModernAVPlayer
+import AudioKit
 
 /// This view is the tile for each song, with the song's details, album art, and an audio player that plays Apple Music's preview for it.
 
@@ -17,10 +18,10 @@ enum LikeDislike: Int {
 }
 
 struct SongPreviewView: View {
-    //    @Binding var lastLikedSongID: String
-    //    @StateObject var bufferStatus: AVPlayerBufferStatusController
+    @State var recommendationRequests = 0
+    
     @Binding var queue: [Song]
-    @ObservedObject var player = ModernAVPlayer()
+    @State var player = ModernAVPlayer()
     
     @State var translation: CGSize = .zero
     @State var swipeStatus: LikeDislike = .none
@@ -34,12 +35,7 @@ struct SongPreviewView: View {
         queue = Array(queue.dropFirst())
     }
     
-    var thresholdPercentage: CGFloat = 0.5 // when the song has draged 50% the width of the screen in either direction
-    
-    /// What percentage of our own width have we swipped
-    /// - Parameters:
-    ///   - geometry: The geometry
-    ///   - gesture: The current gesture translation value
+    var thresholdPercentage: CGFloat = 0.5
     func getGesturePercentage(_ geometry: GeometryProxy, from gesture: DragGesture.Value) -> CGFloat {
         gesture.translation.width / geometry.size.width
     }
@@ -47,34 +43,7 @@ struct SongPreviewView: View {
     
     func updateRecommendations() {
         /// Right now, the recommendation system of Tuneder gets the last liked song's artist's top songs and top song of similar artists to the queue.
-        Task {
-            let id = lastLikedSong!.id
-            
-            var songsToQueue: [Song] = []
-            let song = try await MCatalog.song(id: id, fetch: [.artists])
-            let songArtistID = song.artists!.first!.id
-            let songArtist = try await MCatalog.artist(id: songArtistID, fetch: [.similarArtists, .topSongs])
-            
-            for song in songArtist.topSongs! {
-                print("Recommending Top Songs Of Artist")
-                songsToQueue.append(song)
-            }
-            
-            for relatedArtist in songArtist.similarArtists! {
-                print("Recommending Top Song From Artist: \(relatedArtist.name)")
-                let relatedArtistID = relatedArtist.id
-                let relatedArtistData = try await MCatalog.artist(id: relatedArtistID, fetch: [.topSongs])
-                if let relatedArtistTopSong = relatedArtistData.topSongs!.first {
-                    songsToQueue.append(relatedArtistTopSong)
-                }
-            }
-            
-            print("Recommendations done \(queue.count)!")
-            for song in songsToQueue {
-                queue.append(song)
-            }
-            print("Added recommendations to queue \(queue.count)!")
-        }
+        
     }
     
     
@@ -151,20 +120,22 @@ struct SongPreviewView: View {
                         // determine snap distance > 0.5 aka half the width of the screen
                         if abs(getGesturePercentage(geometry, from: value)) > thresholdPercentage {
                             player.stop()
-                            withAnimation {
-                                onRemove()
-                            }
+                            
                             
                             if swipeStatus == .like {
-                                DispatchQueue.main.async {
-                                    print("SONG LIKED SONG LIKED SONG LIKED SONG LIKED SONG LIKED SONG LIKED SONG LIKED SONG LIKED")
-                                    
+                                lastLikedSong = song
+                                
+                                Task {
                                     let libraryHandler = MusicLibraryHandler()
                                     libraryHandler.addSong(song.id.rawValue)
-                                    lastLikedSong = song
+                                }
+                                
+                                if recommendationRequests <= 2 {
                                     updateRecommendations()
                                 }
                             }
+                            
+                            onRemove()
                         } else {
                             translation = .zero
                         }
@@ -178,7 +149,9 @@ struct SongPreviewView: View {
             
 //            player = AVPlayer(playerItem: playerItem)
             let media = ModernAVPlayerMediaItem(item: playerItem, type: .clip, metadata: .none)
-            player.load(media: media!, autostart: false)
+            if swipeStatus == .none {
+                player.load(media: media!, autostart: false)
+            }
         }
     }
 }
@@ -204,7 +177,7 @@ struct ButtonView: View {
     
     var body: some View {
         VStack {
-            switch player.context.state {
+            switch player.state {
                 case .buffering:
                     ProgressView().progressViewStyle(CircularProgressViewStyle())
                 case .failed:

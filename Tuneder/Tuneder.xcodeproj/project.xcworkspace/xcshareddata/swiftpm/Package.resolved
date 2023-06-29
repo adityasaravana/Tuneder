@@ -1,61 +1,86 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "ColorKit",
-        "repositoryURL": "https://github.com/Boris-Em/ColorKit.git",
-        "state": {
-          "branch": "master",
-          "revision": "6e4375a6126eac0a29893c607ae318bdbe33310c",
-          "version": null
-        }
-      },
-      {
-        "package": "Defaults",
-        "repositoryURL": "https://github.com/sindresorhus/Defaults.git",
-        "state": {
-          "branch": "main",
-          "revision": "bd14dae265091c5fb1ba1123a52861ae9f2ede84",
-          "version": null
-        }
-      },
-      {
-        "package": "MusadoraKit",
-        "repositoryURL": "https://github.com/rryam/MusadoraKit.git",
-        "state": {
-          "branch": "main",
-          "revision": "1a83112b79fa13fac7cc950b0503e937658df78e",
-          "version": null
-        }
-      },
-      {
-        "package": "RxSwift",
-        "repositoryURL": "https://github.com/ReactiveX/RxSwift.git",
-        "state": {
-          "branch": null,
-          "revision": "cec68169a048a079f461ba203fe85636548d7a89",
-          "version": "5.1.3"
-        }
-      },
-      {
-        "package": "SwiftfulLoadingIndicators",
-        "repositoryURL": "https://github.com/SwiftfulThinking/SwiftfulLoadingIndicators.git",
-        "state": {
-          "branch": null,
-          "revision": "85858c0246dcd781228301f9928519f75ce89758",
-          "version": "0.0.4"
-        }
-      },
-      {
-        "package": "SwiftLintPlugin",
-        "repositoryURL": "https://github.com/lukepistrol/SwiftLintPlugin",
-        "state": {
-          "branch": null,
-          "revision": "d3ec7fb242ebe1d8e23bf17e58a1e27d43125994",
-          "version": "0.2.6"
-        }
+  "pins" : [
+    {
+      "identity" : "audiokit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AudioKit/AudioKit.git",
+      "state" : {
+        "revision" : "c30a151fea40696ad0a45c60c2bba29112bb4279",
+        "version" : "5.6.1"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "colorkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Boris-Em/ColorKit.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "6e4375a6126eac0a29893c607ae318bdbe33310c"
+      }
+    },
+    {
+      "identity" : "defaults",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sindresorhus/Defaults.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "bd14dae265091c5fb1ba1123a52861ae9f2ede84"
+      }
+    },
+    {
+      "identity" : "lazy-view-swiftui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/joehinkle11/Lazy-View-SwiftUI",
+      "state" : {
+        "branch" : "master",
+        "revision" : "0f838ed8eb0beb3faab35aae225f2545a1dd5338"
+      }
+    },
+    {
+      "identity" : "modernavplayer",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/noreasonprojects/ModernAVPlayer",
+      "state" : {
+        "revision" : "ab16588b7b8e297255e2d8a7407eb89506af265b",
+        "version" : "1.7.3"
+      }
+    },
+    {
+      "identity" : "musadorakit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/rryam/MusadoraKit.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "1a83112b79fa13fac7cc950b0503e937658df78e"
+      }
+    },
+    {
+      "identity" : "rxswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ReactiveX/RxSwift.git",
+      "state" : {
+        "revision" : "cec68169a048a079f461ba203fe85636548d7a89",
+        "version" : "5.1.3"
+      }
+    },
+    {
+      "identity" : "swiftfulloadingindicators",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SwiftfulThinking/SwiftfulLoadingIndicators.git",
+      "state" : {
+        "revision" : "85858c0246dcd781228301f9928519f75ce89758",
+        "version" : "0.0.4"
+      }
+    },
+    {
+      "identity" : "swiftlintplugin",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/lukepistrol/SwiftLintPlugin",
+      "state" : {
+        "revision" : "d3ec7fb242ebe1d8e23bf17e58a1e27d43125994",
+        "version" : "0.2.6"
+      }
+    }
+  ],
+  "version" : 2
 }

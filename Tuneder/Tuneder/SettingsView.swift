@@ -15,7 +15,6 @@ struct SettingsView: View {
             Defaults[.explicitAllowed] = self.explicitContentAllowed
             if !self.explicitContentAllowed {
                 self.showExplicitWarningText = false
-                
             }
         }
     }
