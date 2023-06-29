@@ -67,9 +67,6 @@ struct SongsView: View {
                 }.padding(.horizontal)
                 Spacer()
                 
-                
-                
-#warning("TODO: These commented-out views are buttons that open a Settings view and a tutorial. As of right now, the settings view stores its values just fine (see Defaults.swift), but I haven't implemented anything to actually not show explicit songs and content when you flip the switch in settings, and haven't got any idea how to make a tutorial. Help would be greatly appreciated.")
                 //                                HStack {
                 //                                    Button {
                 //

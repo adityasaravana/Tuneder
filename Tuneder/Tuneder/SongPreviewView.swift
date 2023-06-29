@@ -51,6 +51,7 @@ struct SongPreviewView: View {
                         VStack(alignment: .leading) {
                             HStack {
                                 Text("\(song.title)")
+                                    .lineLimit(1)
                                     .foregroundColor(.white)
                                     .font(.title)
                                     .bold()
@@ -65,11 +66,13 @@ struct SongPreviewView: View {
                                 .font(.subheadline)
                                 .bold()
                             Text(song.genreNames.joined(separator: ", "))
+                                .lineLimit(1)
                                 .font(.subheadline)
                                 .foregroundColor(.gray)
                         }
                         
                         Spacer()
+                        
                         Button(action: {
                             
                             if player.state == .loaded {
@@ -200,7 +203,7 @@ struct SongImageView: View {
     var song: Song
     var geometry: GeometryProxy
     var body: some View {
-        AsyncImage(url: song.artwork?.url(width: 700, height: 700)) { image in
+        AsyncImage(url: song.artwork?.url(width: Int(geometry.size.width), height: Int(geometry.size.height))) { image in
             image
             
                 .resizable()

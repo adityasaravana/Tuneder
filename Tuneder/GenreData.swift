@@ -22,7 +22,6 @@ struct GenreData: Codable {
                 let genreRequest = try await MCatalog.genre(id: staticid!)
                 await genreActor.set(genreRequest)
             } catch {
-#warning("TODO: Error's aren't handled well all over the app, that's something I'd like to fix.")
                 print(error.localizedDescription)
                 return nil
             }

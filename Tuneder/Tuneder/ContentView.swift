@@ -15,16 +15,6 @@ struct ContentView: View {
     @State var genreSelection: GenreSelection = .none
     
     let musicManager = MusicManager.shared
-    
-    //    private func getCardWidth(_ geometry: GeometryProxy, id: Int) -> CGFloat {
-    //        let offset: CGFloat = CGFloat(queue.count - 1 - id) * 10
-    //        return geometry.size.width - offset
-    //    }
-    //
-    //    private func getCardOffset(_ geometry: GeometryProxy, id: Int) -> CGFloat {
-    //        return  CGFloat(queue.count - 1 - id) * 10
-    //    }
-    
     var body: some View {
         VStack {
             
