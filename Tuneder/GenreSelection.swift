@@ -59,7 +59,7 @@ enum GenreSelection: CaseIterable, Identifiable, Equatable {
             name = "Electronic"
             id = "7"
         case .alternative:
-            name = "Alternative (Emo/Punk/Grunge Rock)"
+            name = "Alternative"
             id = "20"
             
         }

@@ -77,6 +77,7 @@ struct ContentView: View {
 
         .onChange(of: genreSelection) { newValue in
             queue = []
+            musicManager.reserve = []
         }
     }
 }
