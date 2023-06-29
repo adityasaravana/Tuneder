@@ -21,7 +21,7 @@ struct SongPreviewView: View {
     let musicManager = MusicManager.shared
     @Binding var queue: [Song]
     @State var player = ModernAVPlayer()
-    
+    @AppStorage(AppStorageNames.showExplicitContentWarning.name) var showExplicitContentWarning: Bool = true
     @State var translation: CGSize = .zero
     @State var swipeStatus: LikeDislike = .none
     
@@ -46,6 +46,23 @@ struct SongPreviewView: View {
                 
                 SwipeTextView(swipeStatus: swipeStatus)
                 VStack(alignment: .leading) {
+                    if queue.first == song {
+                        if song.contentRating == .explicit {
+                            if showExplicitContentWarning {
+                                VStack {
+                                    Text("This song is rated explicit. You can block explicit content in Settings.")
+                                    Button("Hide this text") {
+                                        showExplicitContentWarning = false
+                                    }.bold()
+                                }
+                                .padding()
+                                .background(.ultraThinMaterial)
+                                .cornerRadius(20)
+                                .multilineTextAlignment(.center)
+                                .font(.caption)
+                            }
+                        }
+                    }
                     Spacer()
                     HStack {
                         VStack(alignment: .leading) {
@@ -116,6 +133,7 @@ struct SongPreviewView: View {
                         if abs(getGesturePercentage(geometry, from: value)) > thresholdPercentage {
                             player.stop()
                             
+                            translation = .zero
                             
                             if swipeStatus == .like {
                                 lastLikedSong = song
@@ -129,6 +147,8 @@ struct SongPreviewView: View {
                                     await musicManager.addRelatedSongs(from: lastLikedSong!)
                                 }
                             }
+                            
+                            swipeStatus = .none
                             
                             onRemove()
                         } else {

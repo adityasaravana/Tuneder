@@ -27,10 +27,9 @@
 		59557DAE2A3E559D00ED1B74 /* MusadoraKit in Frameworks */ = {isa = PBXBuildFile; productRef = 59557DAD2A3E559D00ED1B74 /* MusadoraKit */; };
 		59557DB02A3E559D00ED1B74 /* MusadoraLabsKit in Frameworks */ = {isa = PBXBuildFile; productRef = 59557DAF2A3E559D00ED1B74 /* MusadoraLabsKit */; };
 		59B244452A46B2D5003973D3 /* SongsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B244442A46B2D5003973D3 /* SongsView.swift */; };
-		59B244472A46BAFF003973D3 /* AVPlayerBufferStatusController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B244462A46BAFF003973D3 /* AVPlayerBufferStatusController.swift */; };
-		59D8282B2A4D2C41001E868E /* AudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 59D8282A2A4D2C41001E868E /* AudioKit */; };
-		59D8282E2A4D30BD001E868E /* LazyViewSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 59D8282D2A4D30BD001E868E /* LazyViewSwiftUI */; };
 		59D828302A4D3B33001E868E /* MusicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D8282F2A4D3B33001E868E /* MusicManager.swift */; };
+		59D828322A4D5D0D001E868E /* AppStorageNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D828312A4D5D0D001E868E /* AppStorageNames.swift */; };
+		59D828342A4D6670001E868E /* ForEachWithIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D828332A4D6670001E868E /* ForEachWithIndex.swift */; };
 		59EDCBDF2A3FFA1500FA6747 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EDCBDE2A3FFA1500FA6747 /* SettingsView.swift */; };
 		59FCBA4A2A3C00CE00FD6BB2 /* SongPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FCBA492A3C00CE00FD6BB2 /* SongPreviewView.swift */; };
 		59FCBA582A3D06D700FD6BB2 /* SongBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FCBA572A3D06D700FD6BB2 /* SongBackgroundView.swift */; };
@@ -53,8 +52,9 @@
 		59557D9F2A3D1F6B00ED1B74 /* audioTest.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = audioTest.m4a; sourceTree = "<group>"; };
 		59557DA52A3D63C300ED1B74 /* ModernAVPlayer.stop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModernAVPlayer.stop.swift; sourceTree = "<group>"; };
 		59B244442A46B2D5003973D3 /* SongsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsView.swift; sourceTree = "<group>"; };
-		59B244462A46BAFF003973D3 /* AVPlayerBufferStatusController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPlayerBufferStatusController.swift; sourceTree = "<group>"; };
 		59D8282F2A4D3B33001E868E /* MusicManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicManager.swift; sourceTree = "<group>"; };
+		59D828312A4D5D0D001E868E /* AppStorageNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageNames.swift; sourceTree = "<group>"; };
+		59D828332A4D6670001E868E /* ForEachWithIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForEachWithIndex.swift; sourceTree = "<group>"; };
 		59EDCBDE2A3FFA1500FA6747 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		59FCBA492A3C00CE00FD6BB2 /* SongPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongPreviewView.swift; sourceTree = "<group>"; };
 		59FCBA512A3C30A100FD6BB2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -68,13 +68,11 @@
 			files = (
 				59557DAE2A3E559D00ED1B74 /* MusadoraKit in Frameworks */,
 				5907FA482A4A817C00E9FD66 /* ModernAVPlayer in Frameworks */,
-				59D8282B2A4D2C41001E868E /* AudioKit in Frameworks */,
 				59557DB02A3E559D00ED1B74 /* MusadoraLabsKit in Frameworks */,
 				59FCBA5B2A3D078200FD6BB2 /* ColorKit in Frameworks */,
 				59557DA92A3D66A900ED1B74 /* SwiftfulLoadingIndicators in Frameworks */,
 				5907FA4A2A4A817C00E9FD66 /* RxModernAVPlayer in Frameworks */,
 				590A4F9D2A3E927000FCF5AE /* Defaults in Frameworks */,
-				59D8282E2A4D30BD001E868E /* LazyViewSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,8 +82,8 @@
 		5909A4302A3BFB21006B5B6D = {
 			isa = PBXGroup;
 			children = (
+				59D828312A4D5D0D001E868E /* AppStorageNames.swift */,
 				59D8282F2A4D3B33001E868E /* MusicManager.swift */,
-				59B244462A46BAFF003973D3 /* AVPlayerBufferStatusController.swift */,
 				5953C1DE2A4273F600A3F685 /* GenreData.swift */,
 				5953C1DC2A4273EA00A3F685 /* GenreSelection.swift */,
 				594CC9112A43E8480027E953 /* GenreActor.swift */,
@@ -121,6 +119,7 @@
 				5909A43C2A3BFB21006B5B6D /* TunederApp.swift */,
 				5909A4402A3BFB22006B5B6D /* Assets.xcassets */,
 				5909A4422A3BFB22006B5B6D /* Preview Content */,
+				59D828332A4D6670001E868E /* ForEachWithIndex.swift */,
 			);
 			path = Tuneder;
 			sourceTree = "<group>";
@@ -172,8 +171,6 @@
 				590A4F9C2A3E927000FCF5AE /* Defaults */,
 				5907FA472A4A817C00E9FD66 /* ModernAVPlayer */,
 				5907FA492A4A817C00E9FD66 /* RxModernAVPlayer */,
-				59D8282A2A4D2C41001E868E /* AudioKit */,
-				59D8282D2A4D30BD001E868E /* LazyViewSwiftUI */,
 			);
 			productName = Tuneder;
 			productReference = 5909A4392A3BFB21006B5B6D /* Tuneder.app */;
@@ -209,8 +206,6 @@
 				59557DAC2A3E559D00ED1B74 /* XCRemoteSwiftPackageReference "MusadoraKit" */,
 				590A4F9B2A3E927000FCF5AE /* XCRemoteSwiftPackageReference "Defaults" */,
 				5907FA462A4A817C00E9FD66 /* XCRemoteSwiftPackageReference "ModernAVPlayer" */,
-				59D828292A4D2C41001E868E /* XCRemoteSwiftPackageReference "AudioKit" */,
-				59D8282C2A4D30BD001E868E /* XCRemoteSwiftPackageReference "Lazy-View-SwiftUI" */,
 			);
 			productRefGroup = 5909A43A2A3BFB21006B5B6D /* Products */;
 			projectDirPath = "";
@@ -248,12 +243,13 @@
 				5953C1DF2A4273F600A3F685 /* GenreData.swift in Sources */,
 				5909A43D2A3BFB21006B5B6D /* TunederApp.swift in Sources */,
 				59EDCBDF2A3FFA1500FA6747 /* SettingsView.swift in Sources */,
+				59D828342A4D6670001E868E /* ForEachWithIndex.swift in Sources */,
 				59D828302A4D3B33001E868E /* MusicManager.swift in Sources */,
+				59D828322A4D5D0D001E868E /* AppStorageNames.swift in Sources */,
 				590A4FAC2A3EA40F00FCF5AE /* SignUpForAppleMusicView.swift in Sources */,
 				59FCBA582A3D06D700FD6BB2 /* SongBackgroundView.swift in Sources */,
 				59FCBA4A2A3C00CE00FD6BB2 /* SongPreviewView.swift in Sources */,
 				5953C1DD2A4273EA00A3F685 /* GenreSelection.swift in Sources */,
-				59B244472A46BAFF003973D3 /* AVPlayerBufferStatusController.swift in Sources */,
 				59B244452A46B2D5003973D3 /* SongsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -505,22 +501,6 @@
 				kind = branch;
 			};
 		};
-		59D828292A4D2C41001E868E /* XCRemoteSwiftPackageReference "AudioKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AudioKit/AudioKit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-		59D8282C2A4D30BD001E868E /* XCRemoteSwiftPackageReference "Lazy-View-SwiftUI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/joehinkle11/Lazy-View-SwiftUI";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		59FCBA592A3D078200FD6BB2 /* XCRemoteSwiftPackageReference "ColorKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Boris-Em/ColorKit.git";
@@ -561,16 +541,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 59557DAC2A3E559D00ED1B74 /* XCRemoteSwiftPackageReference "MusadoraKit" */;
 			productName = MusadoraLabsKit;
-		};
-		59D8282A2A4D2C41001E868E /* AudioKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 59D828292A4D2C41001E868E /* XCRemoteSwiftPackageReference "AudioKit" */;
-			productName = AudioKit;
-		};
-		59D8282D2A4D30BD001E868E /* LazyViewSwiftUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 59D8282C2A4D30BD001E868E /* XCRemoteSwiftPackageReference "Lazy-View-SwiftUI" */;
-			productName = LazyViewSwiftUI;
 		};
 		59FCBA5A2A3D078200FD6BB2 /* ColorKit */ = {
 			isa = XCSwiftPackageProductDependency;

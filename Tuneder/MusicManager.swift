@@ -6,6 +6,7 @@
 //
 
 import MusadoraKit
+import Defaults
 
 class MusicManager {
     init() {
@@ -40,9 +41,16 @@ class MusicManager {
         do {
             let request = await MusicCatalogChartsRequest(genre: genre.genreData.catalogData(), types: [Song.self])
             
+            
             let response = try await request.response()
             
-            reserve = response.songCharts.first?.items.reversed().reversed() ?? []
+            if Defaults[.explicitContentAllowed] {
+                reserve = response.songCharts.first?.items.reversed().reversed() ?? []
+            } else {
+                let cleanedResponse = try await response.songCharts.first?.items.clean
+                reserve = cleanedResponse?.reversed().reversed() ?? []
+            }
+            
         } catch {
             
         }
@@ -58,7 +66,13 @@ class MusicManager {
             let songArtist = try await MCatalog.artist(id: songArtistID, fetch: [.similarArtists, .topSongs])
             
             if let songArtistTopSong = songArtist.topSongs?.first! {
-                reserve.append(songArtistTopSong)
+                if songArtistTopSong.contentRating == .explicit {
+                    if Defaults[.explicitContentAllowed] {
+                        reserve.append(songArtistTopSong)
+                    }
+                } else {
+                    reserve.append(songArtistTopSong)
+                }
             }
             
             for relatedArtist in songArtist.similarArtists! {
@@ -66,7 +80,13 @@ class MusicManager {
                 let relatedArtistID = relatedArtist.id
                 let relatedArtistData = try await MCatalog.artist(id: relatedArtistID, fetch: [.topSongs])
                 if let relatedArtistTopSong = relatedArtistData.topSongs!.first {
-                    reserve.append(relatedArtistTopSong)
+                    if relatedArtistTopSong.contentRating == .explicit {
+                        if Defaults[.explicitContentAllowed] {
+                            reserve.append(relatedArtistTopSong)
+                        }
+                    } else {
+                        reserve.append(relatedArtistTopSong)
+                    }
                 }
             }
         } catch {

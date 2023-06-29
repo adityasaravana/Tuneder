@@ -1,15 +1,6 @@
 {
   "pins" : [
     {
-      "identity" : "audiokit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/AudioKit/AudioKit.git",
-      "state" : {
-        "revision" : "c30a151fea40696ad0a45c60c2bba29112bb4279",
-        "version" : "5.6.1"
-      }
-    },
-    {
       "identity" : "colorkit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Boris-Em/ColorKit.git",
@@ -25,15 +16,6 @@
       "state" : {
         "branch" : "main",
         "revision" : "bd14dae265091c5fb1ba1123a52861ae9f2ede84"
-      }
-    },
-    {
-      "identity" : "lazy-view-swiftui",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/joehinkle11/Lazy-View-SwiftUI",
-      "state" : {
-        "branch" : "master",
-        "revision" : "0f838ed8eb0beb3faab35aae225f2545a1dd5338"
       }
     },
     {
