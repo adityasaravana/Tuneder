@@ -64,10 +64,21 @@ struct ContentView: View {
                 }
             }
         }
+        .onAppear {
+            
+#if DEBUG
+            /// Finding the IDs of genres to add to GenreSelection.
+            Task {
+                await musicManager.search("grunge")
+            }
+#endif
+            
+        }
+
+        .onChange(of: genreSelection) { newValue in
+            queue = []
+        }
     }
-//    .onChange(of: genreSelection) { newValue in
-//        queue = []
-//    }
 }
 
 

@@ -19,11 +19,11 @@ class MusicManager {
     }()
     
     var reserve: [Song] = []
-//    {
-//        didSet {
-//            removeDuplicates()
-//        }
-//    }
+    //    {
+    //        didSet {
+    //            removeDuplicates()
+    //        }
+    //    }
     
     func fetch() -> [Song] {
         let fetchedSongs = Array(reserve.prefix(5))
@@ -74,9 +74,19 @@ class MusicManager {
         }
     }
     
-    func search(query: String) {
-        
+    func search(_ query: String) async {
+        /// This code fetches the genres and ids of songs that that you enter in searchTerm, useful for adding more genres (See GenreSelection)
+        do {
+            let songSearch = try await MCatalog.search(for: query, types: [.songs], limit: 3)
+            for song in songSearch.songs {
+                let songDetailed = try await MCatalog.song(id: song.id, fetch: [.genres])
+                
+                for genre in songDetailed.genres! {
+                    print("⚠️⚠️⚠️⚠️⚠️⚠️ GENRE NAME: \(genre.name), ID: \(genre.id) ⚠️⚠️⚠️⚠️⚠️⚠️")
+                }
+            }
+        } catch {
+            print("caught at MusicManager.searchQuery")
+        }
     }
-    
-    
 }
