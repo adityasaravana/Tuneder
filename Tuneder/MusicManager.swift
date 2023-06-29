@@ -31,7 +31,6 @@ class MusicManager {
         return fetchedSongs
     }
     
-    
     func removeDuplicates() {
         let cleaned = Set(reserve)
         reserve = Array(cleaned)
@@ -75,6 +74,9 @@ class MusicManager {
         }
     }
     
+    func search(query: String) {
+        
+    }
     
     
 }

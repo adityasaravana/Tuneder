@@ -49,12 +49,17 @@ struct ContentView: View {
                             if musicManager.reserve.isEmpty {
                                 Task {
                                     await musicManager.addChartSongs(genre: genreSelection)
-                                    queue = musicManager.fetch()
+                                    musicManager.removeDuplicates()
+                                    withAnimation {
+                                        queue = musicManager.fetch()
+                                    }
                                 }
                             } else {
-                                queue = musicManager.fetch()
+                                musicManager.removeDuplicates()
+                                withAnimation {
+                                    queue = musicManager.fetch()
+                                }
                             }
-                            
                         }
                 }
             }

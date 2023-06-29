@@ -18,8 +18,7 @@ enum LikeDislike: Int {
 }
 
 struct SongPreviewView: View {
-    @State var recommendationRequests = 0
-    
+    let musicManager = MusicManager.shared
     @Binding var queue: [Song]
     @State var player = ModernAVPlayer()
     
@@ -39,13 +38,6 @@ struct SongPreviewView: View {
     func getGesturePercentage(_ geometry: GeometryProxy, from gesture: DragGesture.Value) -> CGFloat {
         gesture.translation.width / geometry.size.width
     }
-    
-    
-    func updateRecommendations() {
-        /// Right now, the recommendation system of Tuneder gets the last liked song's artist's top songs and top song of similar artists to the queue.
-        
-    }
-    
     
     var body: some View {
         GeometryReader { geometry in
@@ -130,8 +122,8 @@ struct SongPreviewView: View {
                                     libraryHandler.addSong(song.id.rawValue)
                                 }
                                 
-                                if recommendationRequests <= 2 {
-                                    updateRecommendations()
+                                Task {
+                                    await musicManager.addRelatedSongs(from: lastLikedSong!)
                                 }
                             }
                             
