@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5907FA482A4A817C00E9FD66 /* ModernAVPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = 5907FA472A4A817C00E9FD66 /* ModernAVPlayer */; };
-		5907FA4A2A4A817C00E9FD66 /* RxModernAVPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = 5907FA492A4A817C00E9FD66 /* RxModernAVPlayer */; };
 		5909A43D2A3BFB21006B5B6D /* TunederApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5909A43C2A3BFB21006B5B6D /* TunederApp.swift */; };
 		5909A43F2A3BFB21006B5B6D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5909A43E2A3BFB21006B5B6D /* ContentView.swift */; };
 		5909A4412A3BFB22006B5B6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5909A4402A3BFB22006B5B6D /* Assets.xcassets */; };
@@ -31,6 +29,8 @@
 		59D828322A4D5D0D001E868E /* AppStorageNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D828312A4D5D0D001E868E /* AppStorageNames.swift */; };
 		59D828342A4D6670001E868E /* ForEachWithIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D828332A4D6670001E868E /* ForEachWithIndex.swift */; };
 		59D828362A4E6CF7001E868E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D828352A4E6CF7001E868E /* MainView.swift */; };
+		59D8283C2A4E9F7F001E868E /* ModernAVPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = 59D8283B2A4E9F7F001E868E /* ModernAVPlayer */; };
+		59D8283E2A4E9F7F001E868E /* RxModernAVPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = 59D8283D2A4E9F7F001E868E /* RxModernAVPlayer */; };
 		59EDCBDF2A3FFA1500FA6747 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EDCBDE2A3FFA1500FA6747 /* SettingsView.swift */; };
 		59FCBA4A2A3C00CE00FD6BB2 /* SongPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FCBA492A3C00CE00FD6BB2 /* SongPreviewView.swift */; };
 		59FCBA582A3D06D700FD6BB2 /* SongBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FCBA572A3D06D700FD6BB2 /* SongBackgroundView.swift */; };
@@ -69,11 +69,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				59557DAE2A3E559D00ED1B74 /* MusadoraKit in Frameworks */,
-				5907FA482A4A817C00E9FD66 /* ModernAVPlayer in Frameworks */,
+				59D8283C2A4E9F7F001E868E /* ModernAVPlayer in Frameworks */,
 				59557DB02A3E559D00ED1B74 /* MusadoraLabsKit in Frameworks */,
 				59FCBA5B2A3D078200FD6BB2 /* ColorKit in Frameworks */,
 				59557DA92A3D66A900ED1B74 /* SwiftfulLoadingIndicators in Frameworks */,
-				5907FA4A2A4A817C00E9FD66 /* RxModernAVPlayer in Frameworks */,
+				59D8283E2A4E9F7F001E868E /* RxModernAVPlayer in Frameworks */,
 				590A4F9D2A3E927000FCF5AE /* Defaults in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -113,6 +113,7 @@
 				59FCBA512A3C30A100FD6BB2 /* Info.plist */,
 				59B244442A46B2D5003973D3 /* SongsView.swift */,
 				59FCBA492A3C00CE00FD6BB2 /* SongPreviewView.swift */,
+				59D828332A4D6670001E868E /* ForEachWithIndex.swift */,
 				5909A43E2A3BFB21006B5B6D /* ContentView.swift */,
 				59D828352A4E6CF7001E868E /* MainView.swift */,
 				59FCBA572A3D06D700FD6BB2 /* SongBackgroundView.swift */,
@@ -122,7 +123,6 @@
 				5909A43C2A3BFB21006B5B6D /* TunederApp.swift */,
 				5909A4402A3BFB22006B5B6D /* Assets.xcassets */,
 				5909A4422A3BFB22006B5B6D /* Preview Content */,
-				59D828332A4D6670001E868E /* ForEachWithIndex.swift */,
 			);
 			path = Tuneder;
 			sourceTree = "<group>";
@@ -172,8 +172,8 @@
 				59557DAD2A3E559D00ED1B74 /* MusadoraKit */,
 				59557DAF2A3E559D00ED1B74 /* MusadoraLabsKit */,
 				590A4F9C2A3E927000FCF5AE /* Defaults */,
-				5907FA472A4A817C00E9FD66 /* ModernAVPlayer */,
-				5907FA492A4A817C00E9FD66 /* RxModernAVPlayer */,
+				59D8283B2A4E9F7F001E868E /* ModernAVPlayer */,
+				59D8283D2A4E9F7F001E868E /* RxModernAVPlayer */,
 			);
 			productName = Tuneder;
 			productReference = 5909A4392A3BFB21006B5B6D /* Tuneder.app */;
@@ -208,7 +208,7 @@
 				59557DA72A3D66A900ED1B74 /* XCRemoteSwiftPackageReference "SwiftfulLoadingIndicators" */,
 				59557DAC2A3E559D00ED1B74 /* XCRemoteSwiftPackageReference "MusadoraKit" */,
 				590A4F9B2A3E927000FCF5AE /* XCRemoteSwiftPackageReference "Defaults" */,
-				5907FA462A4A817C00E9FD66 /* XCRemoteSwiftPackageReference "ModernAVPlayer" */,
+				59D8283A2A4E9F7F001E868E /* XCRemoteSwiftPackageReference "ModernAVPlayer" */,
 			);
 			productRefGroup = 5909A43A2A3BFB21006B5B6D /* Products */;
 			projectDirPath = "";
@@ -473,14 +473,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		5907FA462A4A817C00E9FD66 /* XCRemoteSwiftPackageReference "ModernAVPlayer" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/noreasonprojects/ModernAVPlayer";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 		590A4F9B2A3E927000FCF5AE /* XCRemoteSwiftPackageReference "Defaults" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sindresorhus/Defaults.git";
@@ -505,6 +497,14 @@
 				kind = branch;
 			};
 		};
+		59D8283A2A4E9F7F001E868E /* XCRemoteSwiftPackageReference "ModernAVPlayer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/noreasonprojects/ModernAVPlayer";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		59FCBA592A3D078200FD6BB2 /* XCRemoteSwiftPackageReference "ColorKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Boris-Em/ColorKit.git";
@@ -516,16 +516,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		5907FA472A4A817C00E9FD66 /* ModernAVPlayer */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5907FA462A4A817C00E9FD66 /* XCRemoteSwiftPackageReference "ModernAVPlayer" */;
-			productName = ModernAVPlayer;
-		};
-		5907FA492A4A817C00E9FD66 /* RxModernAVPlayer */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5907FA462A4A817C00E9FD66 /* XCRemoteSwiftPackageReference "ModernAVPlayer" */;
-			productName = RxModernAVPlayer;
-		};
 		590A4F9C2A3E927000FCF5AE /* Defaults */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 590A4F9B2A3E927000FCF5AE /* XCRemoteSwiftPackageReference "Defaults" */;
@@ -545,6 +535,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 59557DAC2A3E559D00ED1B74 /* XCRemoteSwiftPackageReference "MusadoraKit" */;
 			productName = MusadoraLabsKit;
+		};
+		59D8283B2A4E9F7F001E868E /* ModernAVPlayer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59D8283A2A4E9F7F001E868E /* XCRemoteSwiftPackageReference "ModernAVPlayer" */;
+			productName = ModernAVPlayer;
+		};
+		59D8283D2A4E9F7F001E868E /* RxModernAVPlayer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59D8283A2A4E9F7F001E868E /* XCRemoteSwiftPackageReference "ModernAVPlayer" */;
+			productName = RxModernAVPlayer;
 		};
 		59FCBA5A2A3D078200FD6BB2 /* ColorKit */ = {
 			isa = XCSwiftPackageProductDependency;

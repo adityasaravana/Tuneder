@@ -39,7 +39,7 @@ struct MainView: View {
                             Button("Reset") {
                                 reset()
                             }
-                        }.padding(.horizontal)
+                        }.padding()
                         Spacer()
                         HStack {
                             Button {
@@ -62,7 +62,7 @@ struct MainView: View {
                             } label: {
                                 Image(systemName: "gear").foregroundColor(.white).padding().background(.ultraThinMaterial, in: Circle())
                             }
-                        }.padding(.horizontal)
+                        }.padding()
                         
                     }
                 } else {

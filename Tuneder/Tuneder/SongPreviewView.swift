@@ -8,7 +8,9 @@
 import SwiftUI
 import AVFoundation
 import MusadoraKit
-import ModernAVPlayer 
+import ModernAVPlayer
+import RxModernAVPlayer
+import RxSwift
 
 /// This view is the tile for each song, with the song's details, album art, and an audio player that plays Apple Music's preview for it.
 
@@ -19,7 +21,8 @@ enum LikeDislike: Int {
 struct SongPreviewView: View {
     let musicManager = MusicManager.shared
     @Binding var queue: [Song]
-    @State var player = ModernAVPlayer()
+    let player = ModernAVPlayer()
+    
     @AppStorage(AppStorageNames.showExplicitContentWarning.name) var showExplicitContentWarning: Bool = true
     @State var translation: CGSize = .zero
     @State var swipeStatus: LikeDislike = .none
@@ -27,7 +30,6 @@ struct SongPreviewView: View {
     var song: Song
     
     @State var lastLikedSong: Song? = nil
-    
     
     func onRemove() {
         queue = Array(queue.dropFirst())
@@ -49,14 +51,14 @@ struct SongPreviewView: View {
                         if song.contentRating == .explicit {
                             if showExplicitContentWarning {
                                 VStack {
-                                    Text("This song is rated explicit. You can block explicit content in Settings.")
+                                    Text("This song is rated explicit. You can block explicit content in Settings.").padding(.bottom)
                                     Button("Hide this text") {
                                         showExplicitContentWarning = false
                                     }.bold()
                                 }
                                 .padding()
                                 .background(.ultraThinMaterial)
-                                .cornerRadius(20)
+                                .cornerRadius(15)
                                 .multilineTextAlignment(.center)
                                 .font(.caption)
                             }
@@ -100,7 +102,7 @@ struct SongPreviewView: View {
                             }
                             print(player.state.rawValue)
                         }) {
-                            ButtonView(player: player).font(.system(size: 24))
+                            PlayerButtonView(player: player).font(.system(size: 24))
                         }
                         .padding()
                     }
@@ -161,28 +163,11 @@ struct SongPreviewView: View {
             let url = song.previewAssets?.first?.url
             let playerItem = AVPlayerItem(url: url ?? URL(fileURLWithPath: Bundle.main.path(forResource: "audioTest", ofType: "m4a")!))
             
-//            player = AVPlayer(playerItem: playerItem)
             let media = ModernAVPlayerMediaItem(item: playerItem, type: .clip, metadata: .none)
             if swipeStatus == .none {
                 player.load(media: media!, autostart: false)
             }
         }
-    }
-}
-
-struct PlayerView: UIViewRepresentable {
-    let player: AVPlayer
-    
-    func makeUIView(context: Context) -> UIView {
-        let playerLayer = AVPlayerLayer(player: player)
-        let view = UIView(frame: .zero)
-        view.layer.addSublayer(playerLayer)
-        return view
-    }
-    
-    func updateUIView(_ uiView: UIView, context: Context) {
-        guard let playerLayer = uiView.layer.sublayers?.first as? AVPlayerLayer else { return }
-        playerLayer.player = player
     }
 }
 
@@ -192,25 +177,25 @@ struct ButtonView: View {
     var body: some View {
         VStack {
             switch player.state {
-                case .buffering:
-                    ProgressView().progressViewStyle(CircularProgressViewStyle())
-                case .failed:
-                    Image(systemName: "xmark.diamond.fill")
-                case .initialization:
-                    ProgressView().progressViewStyle(CircularProgressViewStyle())
-                case .loaded:
-                    Image(systemName: "play.fill")
-                case .loading:
-                    ProgressView().progressViewStyle(CircularProgressViewStyle())
-                case .paused:
-                    Image(systemName: "play.fill")
-                case .playing:
-                    Image(systemName: "pause.fill")
-                case .stopped:
-                    Image(systemName: "xmark.diamond.fill")
-                case .waitingForNetwork:
-                    ProgressView().progressViewStyle(CircularProgressViewStyle())
-                }
+            case .buffering:
+                ProgressView().progressViewStyle(CircularProgressViewStyle())
+            case .failed:
+                Image(systemName: "xmark.diamond.fill")
+            case .initialization:
+                ProgressView().progressViewStyle(CircularProgressViewStyle())
+            case .loaded:
+                Image(systemName: "play.fill")
+            case .loading:
+                ProgressView().progressViewStyle(CircularProgressViewStyle())
+            case .paused:
+                Image(systemName: "play.fill")
+            case .playing:
+                Image(systemName: "pause.fill")
+            case .stopped:
+                Image(systemName: "xmark.diamond.fill")
+            case .waitingForNetwork:
+                ProgressView().progressViewStyle(CircularProgressViewStyle())
+            }
         }
         .padding()
         .background(.thinMaterial)
@@ -271,5 +256,84 @@ struct SwipeTextView: View {
                 ).padding(.top, 45)
                 .rotationEffect(Angle.degrees(45))
         }
+    }
+}
+
+extension ModernAVPlayer.State {
+    func sysItem() -> UIImage? {
+        switch self {
+        case .buffering, .loading:
+            if #available(iOS 13.0, *) {
+                return UIImage(systemName: "icloud.and.arrow.down")
+            }
+        case .paused:
+            if #available(iOS 13.0, *) {
+                return UIImage(systemName: "pause.circle")
+            }
+        case .playing:
+            if #available(iOS 13.0, *) {
+                return UIImage(systemName: "play.circle")
+            }
+        case .failed:
+            if #available(iOS 13.0, *) {
+                return UIImage(systemName: "xmark")
+            }
+        default:
+            return UIImage(systemName: "xmark")
+        }
+    }
+    
+}
+
+struct PlayerButtonView: UIViewControllerRepresentable {
+    typealias UIViewControllerType = PlayerButtonImage
+    var player: ModernAVPlayer
+    func makeUIViewController(context: Context) -> PlayerButtonImage {
+        let vc = PlayerButtonImage(player: player)
+        // Do some configurations here if needed.
+        return vc
+    }
+    
+    func updateUIViewController(_ uiViewController: PlayerButtonImage, context: Context) {
+        // Updates the state of the specified view controller with new information from SwiftUI.
+    }
+}
+
+class PlayerButtonImage: UIViewController {
+    // Your player using modern AVPlayer
+    var player: ModernAVPlayer
+    let imageView = UIImageView()
+    
+    init(player: ModernAVPlayer) {
+        self.player = player
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+   
+    // Defining the dispose bag
+    let disposeBag = DisposeBag()
+    
+    func set(state: ModernAVPlayer.State) {
+        self.imageView.image = state.sysItem()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //imageView.center = self.view.center
+        imageView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        //imageView.contentMode = .scaleAspectFit
+        self.view.addSubview(imageView)
+        // Defining player state reaction
+        let state: Observable<ModernAVPlayer.State> = player.rx.state
+        state
+            .subscribe(onNext: { [weak self] currentState in
+                self?.set(state: currentState)
+            })
+            .disposed(by: disposeBag)
+        
+        // And further setup of ModernAVPlayer after...
     }
 }
