@@ -102,8 +102,7 @@ struct SongPreviewView: View {
                             }
                             print(player.state.rawValue)
                         }) {
-                            // PlayerButtonView(player: player).font(.system(size: 24))
-                            PlayButton(player: player, playerState: .loading).font(.system(size: 24))
+                            ButtonView(player: player, playerState: .loading).font(.system(size: 24))
                         }
                         .padding()
                     }
@@ -165,8 +164,11 @@ struct SongPreviewView: View {
             let playerItem = AVPlayerItem(url: url ?? URL(fileURLWithPath: Bundle.main.path(forResource: "audioTest", ofType: "m4a")!))
             
             let media = ModernAVPlayerMediaItem(item: playerItem, type: .clip, metadata: .none)
+            
             if swipeStatus == .none {
+                
                 player.load(media: media!, autostart: false)
+                player.loopMode = true
             }
         }
     }
@@ -178,7 +180,7 @@ struct SongImageView: View {
     var body: some View {
         AsyncImage(url: song.artwork?.url(width: Int(geometry.size.width), height: Int(geometry.size.height))) { image in
             image
-            
+
                 .resizable()
                 .overlay (
                     Rectangle()
@@ -189,12 +191,11 @@ struct SongImageView: View {
                         .clipped()
                 )
                 .aspectRatio(contentMode: .fill)
-            //                .frame(width: geometry.size.width, height: geometry.size.height * 0.75)
-            //                .clipped()
-            
-            
         } placeholder: {
-            Color.gray
+            ZStack {
+                Color.gray.opacity(0.4)
+                ProgressView().progressViewStyle(CircularProgressViewStyle()).font(.system(size: 24))
+            }
         }
     }
 }
@@ -228,7 +229,7 @@ struct SwipeTextView: View {
     }
 }
 
-struct PlayButton: View {
+struct ButtonView: View {
     var player: ModernAVPlayer
     @State var playerState: ModernAVPlayer.State
     let disposeBag = DisposeBag()
