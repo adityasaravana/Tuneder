@@ -37,10 +37,11 @@ class MusicManager {
         reserve = Array(cleaned)
     }
     
+    
     func addChartSongs(genre: GenreSelection) async {
         do {
             var request = await MusicCatalogChartsRequest(genre: genre.genreData.catalogData(), types: [Song.self])
-            request.offset = 1000
+            request.offset = 5000
             
             let response = try await request.response()
             print("ExplicitContentAllowed: \(Defaults[.explicitContentAllowed])")
