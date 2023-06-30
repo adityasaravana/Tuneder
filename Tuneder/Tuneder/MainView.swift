@@ -66,24 +66,29 @@ struct MainView: View {
                         
                     }
                 } else {
-                    LoadingIndicator(animation: .text, size: .large)
-                        .foregroundColor(.black)
-                        .onAppear {
-                            if musicManager.reserve.isEmpty {
-                                Task {
-                                    await musicManager.addChartSongs(genre: genreSelection)
+                    VStack {
+                        Spacer()
+                        LoadingIndicator(animation: .text, size: .large)
+                            .foregroundColor(.black)
+                            .onAppear {
+                                if musicManager.reserve.isEmpty {
+                                    Task {
+                                        await musicManager.addChartSongs(genre: genreSelection)
+                                        musicManager.removeDuplicates()
+                                        withAnimation {
+                                            queue = musicManager.fetch()
+                                        }
+                                    }
+                                } else {
                                     musicManager.removeDuplicates()
                                     withAnimation {
                                         queue = musicManager.fetch()
                                     }
                                 }
-                            } else {
-                                musicManager.removeDuplicates()
-                                withAnimation {
-                                    queue = musicManager.fetch()
-                                }
                             }
-                        }
+                        Spacer()
+                        Text("Having issues? Email aditya.saravana@icloud.com").padding(.bottom)
+                    }
                 }
             }
             
