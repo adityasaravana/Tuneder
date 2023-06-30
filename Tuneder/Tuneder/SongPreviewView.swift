@@ -21,7 +21,7 @@ enum LikeDislike: Int {
 struct SongPreviewView: View {
     let musicManager = MusicManager.shared
     @Binding var queue: [Song]
-    let player = ModernAVPlayer()
+    @State var player = ModernAVPlayer()
     
     @AppStorage(AppStorageNames.showExplicitContentWarning.name) var showExplicitContentWarning: Bool = true
     @State var translation: CGSize = .zero
@@ -102,7 +102,8 @@ struct SongPreviewView: View {
                             }
                             print(player.state.rawValue)
                         }) {
-                            PlayerButtonView(player: player).font(.system(size: 24))
+                            // PlayerButtonView(player: player).font(.system(size: 24))
+                            PlayButton(player: player, playerState: .loading).font(.system(size: 24))
                         }
                         .padding()
                     }
@@ -171,38 +172,6 @@ struct SongPreviewView: View {
     }
 }
 
-struct ButtonView: View {
-    var player: ModernAVPlayer
-    
-    var body: some View {
-        VStack {
-            switch player.state {
-            case .buffering:
-                ProgressView().progressViewStyle(CircularProgressViewStyle())
-            case .failed:
-                Image(systemName: "xmark.diamond.fill")
-            case .initialization:
-                ProgressView().progressViewStyle(CircularProgressViewStyle())
-            case .loaded:
-                Image(systemName: "play.fill")
-            case .loading:
-                ProgressView().progressViewStyle(CircularProgressViewStyle())
-            case .paused:
-                Image(systemName: "play.fill")
-            case .playing:
-                Image(systemName: "pause.fill")
-            case .stopped:
-                Image(systemName: "xmark.diamond.fill")
-            case .waitingForNetwork:
-                ProgressView().progressViewStyle(CircularProgressViewStyle())
-            }
-        }
-        .padding()
-        .background(.thinMaterial)
-        .cornerRadius(CGFloat(Int.max))
-    }
-}
-
 struct SongImageView: View {
     var song: Song
     var geometry: GeometryProxy
@@ -259,81 +228,30 @@ struct SwipeTextView: View {
     }
 }
 
-extension ModernAVPlayer.State {
-    func sysItem() -> UIImage? {
-        switch self {
-        case .buffering, .loading:
-            if #available(iOS 13.0, *) {
-                return UIImage(systemName: "icloud.and.arrow.down")
-            }
-        case .paused:
-            if #available(iOS 13.0, *) {
-                return UIImage(systemName: "pause.circle")
-            }
-        case .playing:
-            if #available(iOS 13.0, *) {
-                return UIImage(systemName: "play.circle")
-            }
-        case .failed:
-            if #available(iOS 13.0, *) {
-                return UIImage(systemName: "xmark")
-            }
-        default:
-            return UIImage(systemName: "xmark")
-        }
-    }
-    
-}
-
-struct PlayerButtonView: UIViewControllerRepresentable {
-    typealias UIViewControllerType = PlayerButtonImage
+struct PlayButton: View {
     var player: ModernAVPlayer
-    func makeUIViewController(context: Context) -> PlayerButtonImage {
-        let vc = PlayerButtonImage(player: player)
-        // Do some configurations here if needed.
-        return vc
-    }
-    
-    func updateUIViewController(_ uiViewController: PlayerButtonImage, context: Context) {
-        // Updates the state of the specified view controller with new information from SwiftUI.
-    }
-}
-
-class PlayerButtonImage: UIViewController {
-    // Your player using modern AVPlayer
-    var player: ModernAVPlayer
-    let imageView = UIImageView()
-    
-    init(player: ModernAVPlayer) {
-        self.player = player
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-   
-    // Defining the dispose bag
+    @State var playerState: ModernAVPlayer.State
     let disposeBag = DisposeBag()
     
-    func set(state: ModernAVPlayer.State) {
-        self.imageView.image = state.sysItem()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        //imageView.center = self.view.center
-        imageView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
-        //imageView.contentMode = .scaleAspectFit
-        self.view.addSubview(imageView)
-        // Defining player state reaction
-        let state: Observable<ModernAVPlayer.State> = player.rx.state
-        state
-            .subscribe(onNext: { [weak self] currentState in
-                self?.set(state: currentState)
-            })
-            .disposed(by: disposeBag)
-        
-        // And further setup of ModernAVPlayer after...
+    var body: some View {
+        VStack {
+            if let systemName = playerState.systemName() {
+                Image(systemName: systemName)
+            } else {
+                ProgressView().progressViewStyle(CircularProgressViewStyle())
+            }
+        }
+        .padding()
+        .frame(width: 60, height: 60)
+        .background(.thinMaterial)
+        .cornerRadius(CGFloat(Int.max))
+        .onAppear {
+            let state: Observable<ModernAVPlayer.State> = player.rx.state
+            state
+                .subscribe(onNext: { [ self ] currentState in
+                    playerState = currentState
+                })
+                .disposed(by: disposeBag)
+        }
     }
 }

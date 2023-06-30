@@ -31,6 +31,7 @@
 		59D828362A4E6CF7001E868E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D828352A4E6CF7001E868E /* MainView.swift */; };
 		59D8283C2A4E9F7F001E868E /* ModernAVPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = 59D8283B2A4E9F7F001E868E /* ModernAVPlayer */; };
 		59D8283E2A4E9F7F001E868E /* RxModernAVPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = 59D8283D2A4E9F7F001E868E /* RxModernAVPlayer */; };
+		59D828442A4EAE68001E868E /* ModernAVPlayer.State.systemName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D828432A4EAE68001E868E /* ModernAVPlayer.State.systemName.swift */; };
 		59EDCBDF2A3FFA1500FA6747 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EDCBDE2A3FFA1500FA6747 /* SettingsView.swift */; };
 		59FCBA4A2A3C00CE00FD6BB2 /* SongPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FCBA492A3C00CE00FD6BB2 /* SongPreviewView.swift */; };
 		59FCBA582A3D06D700FD6BB2 /* SongBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FCBA572A3D06D700FD6BB2 /* SongBackgroundView.swift */; };
@@ -57,6 +58,7 @@
 		59D828312A4D5D0D001E868E /* AppStorageNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageNames.swift; sourceTree = "<group>"; };
 		59D828332A4D6670001E868E /* ForEachWithIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForEachWithIndex.swift; sourceTree = "<group>"; };
 		59D828352A4E6CF7001E868E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		59D828432A4EAE68001E868E /* ModernAVPlayer.State.systemName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModernAVPlayer.State.systemName.swift; sourceTree = "<group>"; };
 		59EDCBDE2A3FFA1500FA6747 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		59FCBA492A3C00CE00FD6BB2 /* SongPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongPreviewView.swift; sourceTree = "<group>"; };
 		59FCBA512A3C30A100FD6BB2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				59557DA52A3D63C300ED1B74 /* ModernAVPlayer.stop.swift */,
+				59D828432A4EAE68001E868E /* ModernAVPlayer.State.systemName.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 				59557DA62A3D63C300ED1B74 /* ModernAVPlayer.stop.swift in Sources */,
 				5953C1DF2A4273F600A3F685 /* GenreData.swift in Sources */,
 				5909A43D2A3BFB21006B5B6D /* TunederApp.swift in Sources */,
+				59D828442A4EAE68001E868E /* ModernAVPlayer.State.systemName.swift in Sources */,
 				59EDCBDF2A3FFA1500FA6747 /* SettingsView.swift in Sources */,
 				59D828342A4D6670001E868E /* ForEachWithIndex.swift in Sources */,
 				59D828302A4D3B33001E868E /* MusicManager.swift in Sources */,
