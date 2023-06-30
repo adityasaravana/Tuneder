@@ -39,15 +39,14 @@ class MusicManager {
     
     func addChartSongs(genre: GenreSelection) async {
         do {
-            let request = await MusicCatalogChartsRequest(genre: genre.genreData.catalogData(), types: [Song.self])
+            var request = await MusicCatalogChartsRequest(genre: genre.genreData.catalogData(), types: [Song.self])
+            request.offset = 1000
             
             let response = try await request.response()
             print("ExplicitContentAllowed: \(Defaults[.explicitContentAllowed])")
             if Defaults[.explicitContentAllowed] {
                 reserve = response.songCharts.first?.items.reversed().reversed() ?? []
             } else {
-                
-                
                 if let cleanedResponse = try await response.songCharts.first?.items.clean {
                     for song in cleanedResponse {
                         if song.contentRating != .explicit {
@@ -66,6 +65,10 @@ class MusicManager {
     
     func addRelatedSongs(from song: Song) async {
         do {
+            if reserve.count >= 10 {
+                reserve = reserve.dropLast(reserve.count - 10)
+            }
+            
             let id = song.id
             
             let songData = try await MCatalog.song(id: id, fetch: [.artists])
