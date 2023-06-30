@@ -11,6 +11,7 @@ import Foundation
 public enum AppStorageNames {
     case explicitContentAllowed
     case showExplicitContentWarning
+    case musicAccessEnabled
     
     var name: String {
         switch self {
@@ -18,6 +19,8 @@ public enum AppStorageNames {
             return "tunederexplicitcontentallowed"
         case .showExplicitContentWarning:
             return "tunedershowexplicitcontentwarning"
+        case .musicAccessEnabled:
+            return "tunedermusicaccessenabled"
         }
     }
 }
