@@ -7,7 +7,7 @@
 
 import Foundation
 
-// Helps stay consistent between UserDefaults, Defaults, and @AppStorage
+/// Helps stay consistent between UserDefaults, Defaults, and @AppStorage
 public enum AppStorageNames {
     case explicitContentAllowed
     case showExplicitContentWarning
@@ -15,9 +15,9 @@ public enum AppStorageNames {
     var name: String {
         switch self {
         case .explicitContentAllowed:
-            return "tuneder.explicitcontentallowed"
+            return "tunederexplicitcontentallowed"
         case .showExplicitContentWarning:
-            return "tuneder.showexplicitcontentwarning"
+            return "tunedershowexplicitcontentwarning"
         }
     }
 }

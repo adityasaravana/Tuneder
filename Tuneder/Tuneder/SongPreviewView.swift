@@ -8,8 +8,7 @@
 import SwiftUI
 import AVFoundation
 import MusadoraKit
-import ModernAVPlayer
-import AudioKit
+import ModernAVPlayer 
 
 /// This view is the tile for each song, with the song's details, album art, and an audio player that plays Apple Music's preview for it.
 

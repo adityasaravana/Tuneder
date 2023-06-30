@@ -41,14 +41,21 @@ class MusicManager {
         do {
             let request = await MusicCatalogChartsRequest(genre: genre.genreData.catalogData(), types: [Song.self])
             
-            
             let response = try await request.response()
-            
+            print("ExplicitContentAllowed: \(Defaults[.explicitContentAllowed])")
             if Defaults[.explicitContentAllowed] {
                 reserve = response.songCharts.first?.items.reversed().reversed() ?? []
             } else {
-                let cleanedResponse = try await response.songCharts.first?.items.clean
-                reserve = cleanedResponse?.reversed().reversed() ?? []
+                
+                
+                if let cleanedResponse = try await response.songCharts.first?.items.clean {
+                    for song in cleanedResponse {
+                        if song.contentRating != .explicit {
+                            print("\(song.title) is \(String(describing: song.contentRating))")
+                            reserve.append(song)
+                        }
+                    }
+                }
             }
             
         } catch {
