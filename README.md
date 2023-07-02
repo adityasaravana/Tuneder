@@ -9,11 +9,8 @@
 <br>
 Tuneder is the successor to SoundSieve (https://github.com/wilzh40/SoundSieve), an open-source iOS app that helps Apple Music users discover new songs with a Tinder-like UI. 
 
-(Make sure to turn on sound, if video player isn't working download demo.mp4 above)
-
-
-https://github.com/adityasaravana/Tuneder/assets/65321521/abe63f03-3687-433b-a22c-3b62411caa6d
-
+https://github.com/adityasaravana/Tuneder/assets/65321521/ab2a5e94-2559-45c0-8841-a8a8dbb37bf9
+(Make sure to turn on audio, if the video player isn't working, you can download the file above.)
 
 ## Installation
 Download/clone/fork the repository, and install to your devices using Xcode.
