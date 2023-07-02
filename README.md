@@ -18,6 +18,13 @@ Download/clone/fork the repository, and install to your devices using Xcode.
 
  If you run across a bug, find something in the app annoying, or have a suggestion to improve the UI, feel free to open an issue or pull request and email me at aditya.saravana@icloud.com. 
 
+## Credits
+
+I owe a huge thanks to [rryam]("https://github.com/rryam") for creating [MusadoraKit]("https://github.com/rryam/MusadoraKit"), a Swift Package that wraps the scariest elements of the Apple Music API and MusicKit into easy-to-use code, which the recommendation system of Tuneder is almost entirely powered by, and for his series on exploring MusicKit. Your articles helped create the beautiful animated background for each song, and got me started with the basics of getting songs from the Apple Music catalog. 
+
+Thanks to [Divide-By-0]("https://github.com/Divide-By-0/") for the great app ideas and advice on open-sourcing code, and thanks to the makers of [ModernAVPlayer]("https://github.com/noreasonprojects/ModernAVPlayer"), who made Tuneder's playback capabilities possible.
+
+
 <br>
 <br>
 
