@@ -9,6 +9,7 @@ import SwiftUI
 
 /// A view that the user sees when they haven't enabled access to Apple Music.
 struct MusicAccessNotEnabledView: View {
+    @Environment(\.openURL) var openURL
     var body: some View {
         VStack {
             HStack {
@@ -22,11 +23,20 @@ struct MusicAccessNotEnabledView: View {
             HStack {
                 Text("Tuneder relies on Apple Music for recommending songs you might like, playing previews of songs, and adding songs to your library.").padding(.vertical).foregroundColor(.gray)
                 
+                
+                
                 Spacer()
             }
             .padding(.horizontal)
             
-            
+            HStack {
+                Text("You might also be seeing this because you don't have an Apple Music subscription.").padding(.vertical).foregroundColor(.gray)
+                
+                
+                
+                Spacer()
+            }
+            .padding(.horizontal)
             
             HStack {
                 Button {
@@ -37,6 +47,19 @@ struct MusicAccessNotEnabledView: View {
                 } label: {
                     Text("Open Settings")
                         .fontWeight(.bold)
+                        
+                                    
+                }
+                .padding()
+                .background(.ultraThinMaterial)
+                .cornerRadius(25)
+                
+                Button {
+                    openURL(URL(string: "https://www.apple.com/apple-music/")!)
+                } label: {
+                    Text("Sign Up For Apple Music")
+                        .fontWeight(.bold)
+                        .foregroundColor(.pink)
                         
                                     
                 }
