@@ -43,7 +43,7 @@ class MusicManager {
     func addChartSongs(genre: GenreSelection, failed: inout Bool, errorDescription: inout String) async {
         do {
             var request = await MusicCatalogChartsRequest(genre: genre.genreData.catalogData(), types: [Song.self])
-            request.offset = 199
+            request.offset = 100
             
             let response = try await request.response()
             print("ExplicitContentAllowed: \(Defaults[.explicitContentAllowed])")
@@ -71,8 +71,8 @@ class MusicManager {
     
     func addRelatedSongs(from song: Song, failed: inout Bool, errorDescription: inout String) async {
         do {
-            if reserve.count >= 10 {
-                reserve = reserve.dropLast(reserve.count - 10)
+            if reserve.count >= 5 {
+                reserve = reserve.dropLast(reserve.count - 5)
             }
             
             let id = song.id

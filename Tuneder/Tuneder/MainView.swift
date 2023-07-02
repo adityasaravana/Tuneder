@@ -11,6 +11,7 @@ import SwiftfulLoadingIndicators
 
 struct MainView: View {
     @AppStorage(AppStorageNames.explicitContentAllowed.name) var explicitContentAllowed = true
+    @State private var showingHelp = false
     @State private var queue: [Song] = []
     @State private var genreSelection: GenreSelection = .none
     @State private var showingSettings = false
@@ -44,13 +45,20 @@ struct MainView: View {
                         }.padding()
                         Spacer()
                         HStack {
-                            Button {
-                                
-                            } label: {
-                                Image(systemName: "questionmark.circle.fill").foregroundColor(.white).padding().background(.ultraThinMaterial, in: Circle())
+                            VStack {
+                                Spacer()
+                                Button {
+                                    showingHelp = true
+                                } label: {
+                                    Image(systemName: "questionmark.circle.fill").foregroundColor(.white).padding().background(.ultraThinMaterial, in: Circle())
+                                }.alert(isPresented: $showingHelp) {
+                                    Alert(title: Text("Instructions"), message: Text("Press the play button to preview a song, swipe right to like it and add it to a new playlist in your library, swipe left to skip it. That's it!"), dismissButton: .default(Text("Awesome")))
+                                }
                             }
+                            
                             Spacer()
                             VStack {
+                                Spacer()
                                 Text("Genre Preference").foregroundColor(.white).bold()
                                 Picker("Genre", selection: $genreSelection) {
                                     ForEach(GenreSelection.allCases) { genre in
@@ -59,13 +67,15 @@ struct MainView: View {
                                 }.padding().background(.ultraThinMaterial).cornerRadius(25)
                             }
                             Spacer()
-                            Button {
-                                showingSettings = true
-                            } label: {
-                                Image(systemName: "gear").foregroundColor(.white).padding().background(.ultraThinMaterial, in: Circle())
+                            VStack {
+                                Spacer()
+                                Button {
+                                    showingSettings = true
+                                } label: {
+                                    Image(systemName: "gear").foregroundColor(.white).padding().background(.ultraThinMaterial, in: Circle())
+                                }
                             }
                         }.padding()
-                        
                     }
                 } else {
                     VStack {
@@ -73,7 +83,7 @@ struct MainView: View {
                         LoadingIndicator(animation: .text, size: .large)
                             .foregroundColor(.black)
                             .onAppear {
-//                                musicManager.testErrorScreen(failed: &showingErrorScreen, errorDescription: &errorDescription)
+                                //                                musicManager.testErrorScreen(failed: &showingErrorScreen, errorDescription: &errorDescription)
                                 if musicManager.reserve.isEmpty {
                                     Task {
                                         await musicManager.addChartSongs(genre: genreSelection, failed: &showingErrorScreen, errorDescription: &errorDescription)
@@ -99,12 +109,12 @@ struct MainView: View {
         .sheet(isPresented: $showingSettings) { SettingsView() }
         .onAppear {
             
-//#if DEBUG
-/// Finding the IDs of genres to add to GenreSelection on debug launch. Replace the search term with a popular artist/name of the genre you want to see added, and add the ID and name in GenreSelection.
-//            Task {
-//                await musicManager.search("grunge")
-//            }
-//#endif
+            //#if DEBUG
+            /// Finding the IDs of genres to add to GenreSelection on debug launch. Replace the search term with a popular artist/name of the genre you want to see added, and add the ID and name in GenreSelection.
+            //            Task {
+            //                await musicManager.search("grunge")
+            //            }
+            //#endif
             
         }
         .onChange(of: genreSelection) { _ in
