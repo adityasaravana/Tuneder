@@ -24,6 +24,9 @@ I owe a huge thanks to [rryam](https://github.com/rryam) for creating [MusadoraK
 
 Thanks to [Divide-By-0](https://github.com/Divide-By-0/) for the great [app ideas](https://github.com/Divide-By-0/ideas-for-projects-people-would-use) and advice on open-sourcing code, and thanks to the makers of [ModernAVPlayer](https://github.com/noreasonprojects/ModernAVPlayer), who made Tuneder's playback functionality possible.
 
+Additional thank-yous:
+- [SwiftfulThinking](https://github.com/SwiftfulThinking) for creating [SwiftfulLoadingIndicators](https://github.com/SwiftfulThinking/SwiftfulLoadingIndicators), which I used to make Tuneder's loading screen.
+- [sindresorhus](https://github.com/sindresorhus) for making Defaults, a nice wrapper over UserDefaults, which I used to pass data from @AppStorage properties in views to classes.
 
 <br>
 <br>
