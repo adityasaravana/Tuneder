@@ -26,7 +26,7 @@ Thanks to [Divide-By-0](https://github.com/Divide-By-0/) for the great [app idea
 
 Additional thank-yous:
 - [SwiftfulThinking](https://github.com/SwiftfulThinking) for creating [SwiftfulLoadingIndicators](https://github.com/SwiftfulThinking/SwiftfulLoadingIndicators), which I used to make Tuneder's loading screen.
-- [sindresorhus](https://github.com/sindresorhus) for making Defaults, a nice wrapper over UserDefaults, which I used to pass data from @AppStorage properties in views to classes.
+- [sindresorhus](https://github.com/sindresorhus) for making [Defaults](https://github.com/sindresorhus/Defaults), a nice wrapper over UserDefaults, which I used to pass data from @AppStorage properties in views to classes.
 
 <br>
 <br>
