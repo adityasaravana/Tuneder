@@ -10,20 +10,25 @@ import StoreKit
 
 struct ContentView: View {
     @State var musicAuthStatus: SKCloudServiceAuthorizationStatus = .notDetermined
-    
+    @State var showingErrorScreen = false
+    @State var errorDescription = "I don't know how the hell you managed to get this error, but you did. This is awkward."
     var body: some View {
         VStack {
-            switch musicAuthStatus {
-            case .notDetermined:
-                MusicAccessNotEnabledView()
-            case .denied:
-                MusicAccessNotEnabledView()
-            case .restricted:
-                MusicAccessNotEnabledView()
-            case .authorized:
-                MainView()
-            @unknown default:
-                MusicAccessNotEnabledView()
+            if showingErrorScreen {
+                ErrorView(debugDescription: errorDescription)
+            } else {
+                switch musicAuthStatus {
+                case .notDetermined:
+                    MusicAccessNotEnabledView()
+                case .denied:
+                    MusicAccessNotEnabledView()
+                case .restricted:
+                    MusicAccessNotEnabledView()
+                case .authorized:
+                    MainView(showingErrorScreen: $showingErrorScreen, errorDescription: $errorDescription)
+                @unknown default:
+                    MusicAccessNotEnabledView()
+                }
             }
         }.onAppear {
             SKCloudServiceController.requestAuthorization { [self] status in

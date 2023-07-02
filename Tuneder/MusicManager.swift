@@ -8,7 +8,15 @@
 import MusadoraKit
 import Defaults
 
+
+/// 
 class MusicManager {
+    func testErrorScreen(failed: inout Bool, errorDescription: inout String) {
+        failed = true
+        errorDescription = "It worked!"
+    }
+    
+    
     init() {
         
     }
@@ -20,11 +28,6 @@ class MusicManager {
     }()
     
     var reserve: [Song] = []
-    //    {
-    //        didSet {
-    //            removeDuplicates()
-    //        }
-    //    }
     
     func fetch() -> [Song] {
         let fetchedSongs = Array(reserve.prefix(5))
@@ -37,11 +40,10 @@ class MusicManager {
         reserve = Array(cleaned)
     }
     
-    
-    func addChartSongs(genre: GenreSelection) async {
+    func addChartSongs(genre: GenreSelection, failed: inout Bool, errorDescription: inout String) async {
         do {
             var request = await MusicCatalogChartsRequest(genre: genre.genreData.catalogData(), types: [Song.self])
-            request.offset = 5000
+            request.offset = 199
             
             let response = try await request.response()
             print("ExplicitContentAllowed: \(Defaults[.explicitContentAllowed])")
@@ -58,13 +60,16 @@ class MusicManager {
                 }
             }
             
+//            reserve.removeDuplicates()
         } catch {
-            
+            print(error.localizedDescription)
+            failed = true
+            errorDescription = "Caught at MusicManager.addChartSongs, error: \(error.localizedDescription)"
         }
     }
     
     
-    func addRelatedSongs(from song: Song) async {
+    func addRelatedSongs(from song: Song, failed: inout Bool, errorDescription: inout String) async {
         do {
             if reserve.count >= 10 {
                 reserve = reserve.dropLast(reserve.count - 10)
@@ -101,7 +106,8 @@ class MusicManager {
                 }
             }
         } catch {
-            print("MusicManager.addRelatedSongs caught...")
+            failed = true
+            errorDescription = "Caught at MusicManager.addRelatedSongs, error: \(error.localizedDescription)"
         }
     }
     

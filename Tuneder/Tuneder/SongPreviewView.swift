@@ -21,11 +21,13 @@ enum LikeDislike: Int {
 struct SongPreviewView: View {
     let musicManager = MusicManager.shared
     @Binding var queue: [Song]
-    @State var player = ModernAVPlayer()
+    @Binding var showingErrorScreen: Bool
+    @Binding var errorDescription: String
+    @State fileprivate var player = ModernAVPlayer()
     
     @AppStorage(AppStorageNames.showExplicitContentWarning.name) var showExplicitContentWarning: Bool = true
-    @State var translation: CGSize = .zero
-    @State var swipeStatus: LikeDislike = .none
+    @State fileprivate var translation: CGSize = .zero
+    @State fileprivate var swipeStatus: LikeDislike = .none
     
     var song: Song
     
@@ -145,7 +147,7 @@ struct SongPreviewView: View {
                                 }
                                 
                                 Task {
-                                    await musicManager.addRelatedSongs(from: lastLikedSong!)
+                                    await musicManager.addRelatedSongs(from: lastLikedSong!, failed: &showingErrorScreen, errorDescription: &errorDescription)
                                 }
                             }
                             

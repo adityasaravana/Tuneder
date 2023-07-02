@@ -24,6 +24,7 @@
 		59557DA92A3D66A900ED1B74 /* SwiftfulLoadingIndicators in Frameworks */ = {isa = PBXBuildFile; productRef = 59557DA82A3D66A900ED1B74 /* SwiftfulLoadingIndicators */; };
 		59557DAE2A3E559D00ED1B74 /* MusadoraKit in Frameworks */ = {isa = PBXBuildFile; productRef = 59557DAD2A3E559D00ED1B74 /* MusadoraKit */; };
 		59557DB02A3E559D00ED1B74 /* MusadoraLabsKit in Frameworks */ = {isa = PBXBuildFile; productRef = 59557DAF2A3E559D00ED1B74 /* MusadoraLabsKit */; };
+		597CF4D92A5126E700670752 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597CF4D82A5126E700670752 /* ErrorView.swift */; };
 		59B244452A46B2D5003973D3 /* SongsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B244442A46B2D5003973D3 /* SongsView.swift */; };
 		59D828302A4D3B33001E868E /* MusicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D8282F2A4D3B33001E868E /* MusicManager.swift */; };
 		59D828322A4D5D0D001E868E /* AppStorageNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D828312A4D5D0D001E868E /* AppStorageNames.swift */; };
@@ -53,6 +54,7 @@
 		5953C1DE2A4273F600A3F685 /* GenreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreData.swift; sourceTree = "<group>"; };
 		59557D9F2A3D1F6B00ED1B74 /* audioTest.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = audioTest.m4a; sourceTree = "<group>"; };
 		59557DA52A3D63C300ED1B74 /* ModernAVPlayer.stop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModernAVPlayer.stop.swift; sourceTree = "<group>"; };
+		597CF4D82A5126E700670752 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		59B244442A46B2D5003973D3 /* SongsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsView.swift; sourceTree = "<group>"; };
 		59D8282F2A4D3B33001E868E /* MusicManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicManager.swift; sourceTree = "<group>"; };
 		59D828312A4D5D0D001E868E /* AppStorageNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageNames.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				590A4FAB2A3EA40F00FCF5AE /* SignUpForAppleMusicView.swift */,
 				59EDCBDE2A3FFA1500FA6747 /* SettingsView.swift */,
 				5909A43C2A3BFB21006B5B6D /* TunederApp.swift */,
+				597CF4D82A5126E700670752 /* ErrorView.swift */,
 				5909A4402A3BFB22006B5B6D /* Assets.xcassets */,
 				5909A4422A3BFB22006B5B6D /* Preview Content */,
 			);
@@ -255,6 +258,7 @@
 				59D828302A4D3B33001E868E /* MusicManager.swift in Sources */,
 				59D828322A4D5D0D001E868E /* AppStorageNames.swift in Sources */,
 				590A4FAC2A3EA40F00FCF5AE /* SignUpForAppleMusicView.swift in Sources */,
+				597CF4D92A5126E700670752 /* ErrorView.swift in Sources */,
 				59FCBA582A3D06D700FD6BB2 /* SongBackgroundView.swift in Sources */,
 				59FCBA4A2A3C00CE00FD6BB2 /* SongPreviewView.swift in Sources */,
 				5953C1DD2A4273EA00A3F685 /* GenreSelection.swift in Sources */,

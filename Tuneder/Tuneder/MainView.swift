@@ -14,6 +14,8 @@ struct MainView: View {
     @State private var queue: [Song] = []
     @State private var genreSelection: GenreSelection = .none
     @State private var showingSettings = false
+    @Binding var showingErrorScreen: Bool
+    @Binding var errorDescription: String
     private let musicManager = MusicManager.shared
     
     fileprivate func reset() {
@@ -27,7 +29,7 @@ struct MainView: View {
         VStack {
             ZStack {
                 if queue.count != 0 && queue.first != nil {
-                    SongsView(queue: $queue)
+                    SongsView(queue: $queue, showingErrorScreen: $showingErrorScreen, errorDescription: $errorDescription)
                     VStack {
                         HStack {
                             Text("Tuneder".uppercased())
@@ -71,9 +73,10 @@ struct MainView: View {
                         LoadingIndicator(animation: .text, size: .large)
                             .foregroundColor(.black)
                             .onAppear {
+//                                musicManager.testErrorScreen(failed: &showingErrorScreen, errorDescription: &errorDescription)
                                 if musicManager.reserve.isEmpty {
                                     Task {
-                                        await musicManager.addChartSongs(genre: genreSelection)
+                                        await musicManager.addChartSongs(genre: genreSelection, failed: &showingErrorScreen, errorDescription: &errorDescription)
                                         musicManager.removeDuplicates()
                                         withAnimation {
                                             queue = musicManager.fetch()
@@ -96,12 +99,12 @@ struct MainView: View {
         .sheet(isPresented: $showingSettings) { SettingsView() }
         .onAppear {
             
-#if DEBUG
-            /// Finding the IDs of genres to add to GenreSelection.
-            Task {
-                await musicManager.search("grunge")
-            }
-#endif
+//#if DEBUG
+/// Finding the IDs of genres to add to GenreSelection on debug launch. Replace the search term with a popular artist/name of the genre you want to see added, and add the ID and name in GenreSelection.
+//            Task {
+//                await musicManager.search("grunge")
+//            }
+//#endif
             
         }
         .onChange(of: genreSelection) { _ in
@@ -110,12 +113,5 @@ struct MainView: View {
         .onChange(of: explicitContentAllowed) { _ in
             reset()
         }
-    }
-}
-
-
-struct MainView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainView()
     }
 }
