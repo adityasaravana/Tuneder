@@ -23,7 +23,6 @@
 		59557DA62A3D63C300ED1B74 /* ModernAVPlayer.stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59557DA52A3D63C300ED1B74 /* ModernAVPlayer.stop.swift */; };
 		59557DA92A3D66A900ED1B74 /* SwiftfulLoadingIndicators in Frameworks */ = {isa = PBXBuildFile; productRef = 59557DA82A3D66A900ED1B74 /* SwiftfulLoadingIndicators */; };
 		59557DAE2A3E559D00ED1B74 /* MusadoraKit in Frameworks */ = {isa = PBXBuildFile; productRef = 59557DAD2A3E559D00ED1B74 /* MusadoraKit */; };
-		59557DB02A3E559D00ED1B74 /* MusadoraLabsKit in Frameworks */ = {isa = PBXBuildFile; productRef = 59557DAF2A3E559D00ED1B74 /* MusadoraLabsKit */; };
 		597CF4D92A5126E700670752 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597CF4D82A5126E700670752 /* ErrorView.swift */; };
 		59B244452A46B2D5003973D3 /* SongsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B244442A46B2D5003973D3 /* SongsView.swift */; };
 		59D828302A4D3B33001E868E /* MusicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D8282F2A4D3B33001E868E /* MusicManager.swift */; };
@@ -74,7 +73,6 @@
 			files = (
 				59557DAE2A3E559D00ED1B74 /* MusadoraKit in Frameworks */,
 				59D8283C2A4E9F7F001E868E /* ModernAVPlayer in Frameworks */,
-				59557DB02A3E559D00ED1B74 /* MusadoraLabsKit in Frameworks */,
 				59FCBA5B2A3D078200FD6BB2 /* ColorKit in Frameworks */,
 				59557DA92A3D66A900ED1B74 /* SwiftfulLoadingIndicators in Frameworks */,
 				59D8283E2A4E9F7F001E868E /* RxModernAVPlayer in Frameworks */,
@@ -176,7 +174,6 @@
 				59FCBA5A2A3D078200FD6BB2 /* ColorKit */,
 				59557DA82A3D66A900ED1B74 /* SwiftfulLoadingIndicators */,
 				59557DAD2A3E559D00ED1B74 /* MusadoraKit */,
-				59557DAF2A3E559D00ED1B74 /* MusadoraLabsKit */,
 				590A4F9C2A3E927000FCF5AE /* Defaults */,
 				59D8283B2A4E9F7F001E868E /* ModernAVPlayer */,
 				59D8283D2A4E9F7F001E868E /* RxModernAVPlayer */,
@@ -390,7 +387,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"Tuneder/Preview Content\"";
 				DEVELOPMENT_TEAM = E2RJE8M8Y3;
 				ENABLE_PREVIEWS = YES;
@@ -428,7 +425,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"Tuneder/Preview Content\"";
 				DEVELOPMENT_TEAM = E2RJE8M8Y3;
 				ENABLE_PREVIEWS = YES;
@@ -540,11 +537,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 59557DAC2A3E559D00ED1B74 /* XCRemoteSwiftPackageReference "MusadoraKit" */;
 			productName = MusadoraKit;
-		};
-		59557DAF2A3E559D00ED1B74 /* MusadoraLabsKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 59557DAC2A3E559D00ED1B74 /* XCRemoteSwiftPackageReference "MusadoraKit" */;
-			productName = MusadoraLabsKit;
 		};
 		59D8283B2A4E9F7F001E868E /* ModernAVPlayer */ = {
 			isa = XCSwiftPackageProductDependency;

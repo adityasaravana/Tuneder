@@ -19,6 +19,7 @@ enum LikeDislike: Int {
 }
 
 struct SongPreviewView: View {
+    
     let musicManager = MusicManager.shared
     @Binding var queue: [Song]
     @Binding var showingErrorScreen: Bool
