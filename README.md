@@ -1,4 +1,8 @@
 # Tuneder
+
+### Website & App Store URL Here: https://adityasaravana.github.io/tuneder-site/
+
+
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/F1F6MHTT3)
 
 <strong>
@@ -17,6 +21,16 @@ https://github.com/adityasaravana/Tuneder/assets/65321521/ab2a5e94-2559-45c0-884
 Download/clone/fork the repository, and install to your devices using Xcode.
 
  If you run across a bug, find something in the app annoying, or have a suggestion to improve the UI, feel free to open an issue or pull request and email me at aditya.saravana@icloud.com. 
+
+## Credits
+
+I owe a huge thanks to [rryam](https://github.com/rryam) for creating [MusadoraKit](https://github.com/rryam/MusadoraKit), a Swift Package that wraps the scariest elements of the Apple Music API and MusicKit into easy-to-use code, which the recommendation system of Tuneder is almost entirely powered by, and for his series on exploring MusicKit. Your articles helped create the beautiful animated background for each song, and got me started with the basics of getting songs from the Apple Music catalog. 
+
+Thanks to [Divide-By-0](https://github.com/Divide-By-0/) for the great [app ideas](https://github.com/Divide-By-0/ideas-for-projects-people-would-use) and advice on open-sourcing code, and thanks to the makers of [ModernAVPlayer](https://github.com/noreasonprojects/ModernAVPlayer), who made Tuneder's playback functionality possible.
+
+Additional thank-yous:
+- [SwiftfulThinking](https://github.com/SwiftfulThinking) for creating [SwiftfulLoadingIndicators](https://github.com/SwiftfulThinking/SwiftfulLoadingIndicators), which I used to make Tuneder's loading screen.
+- [sindresorhus](https://github.com/sindresorhus) for making [Defaults](https://github.com/sindresorhus/Defaults), a nice wrapper over UserDefaults, which I used to pass data from @AppStorage properties in views to classes.
 
 <br>
 <br>
