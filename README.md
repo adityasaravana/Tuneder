@@ -1,6 +1,6 @@
 # Tuneder
 
-### Website & App Store URL Here: https://adityasaravana.github.io/tuneder-site/
+<a href="https://apps.apple.com/us/app/tuneder-song-discovery/id6450867856?itscg=30200&amp;itsct=apps_box_appicon" style="width: 170px; height: 170px; border-radius: 22%; overflow: hidden; display: inline-block; vertical-align: middle;"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple126/v4/1a/21/a5/1a21a5eb-d349-1477-00aa-accdc65d15c1/AppIcon-1x_U007emarketing-0-7-0-85-220.png/540x540bb.jpg" alt="Tuneder - Song Discovery" style="width: 170px; height: 170px; border-radius: 22%; overflow: hidden; display: inline-block; vertical-align: middle;"></a>
 
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/F1F6MHTT3)
