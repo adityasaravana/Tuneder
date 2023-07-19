@@ -11,6 +11,7 @@ import Defaults
 
 
 extension Defaults.Keys {
-    static let explicitContentAllowed = Key<Bool>(AppStorageNames.explicitContentAllowed.name, default: true)
-    static let showExplicitContentWarning = Key<Bool>(AppStorageNames.showExplicitContentWarning.name, default: true)
+    static let explicitContentAllowed = Key<Bool>("explicitContentAllowed", default: true)
+    static let showExplicitContentWarning = Key<Bool>("showExplicitContentWarning", default: true)
+    static let musicAccessEnabled = Key<Bool>("musicAccessEnabled", default: false)
 }

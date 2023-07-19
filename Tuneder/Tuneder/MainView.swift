@@ -8,9 +8,10 @@
 import SwiftUI
 import MusicKit
 import SwiftfulLoadingIndicators
+import Defaults
 
 struct MainView: View {
-    @AppStorage(AppStorageNames.explicitContentAllowed.name) var explicitContentAllowed = true
+    @Default(.explicitContentAllowed) var explicitContentAllowed
     @State private var showingHelp = false
     @State private var queue: [Song] = []
     @State private var genreSelection: GenreSelection = .none
@@ -24,6 +25,14 @@ struct MainView: View {
             queue = []
             musicManager.reserve = []
         }
+    }
+    
+    func addRelatedSongs() async {
+        var showingErrorScreen = self.showingErrorScreen
+        var errorDescription = self.errorDescription
+        await musicManager.addChartSongs(genre: genreSelection, failed: &showingErrorScreen, errorDescription: &errorDescription)
+        self.showingErrorScreen = showingErrorScreen
+        self.errorDescription = errorDescription
     }
     
     var body: some View {
@@ -86,7 +95,7 @@ struct MainView: View {
                                 //                                musicManager.testErrorScreen(failed: &showingErrorScreen, errorDescription: &errorDescription)
                                 if musicManager.reserve.isEmpty {
                                     Task {
-                                        await musicManager.addChartSongs(genre: genreSelection, failed: &showingErrorScreen, errorDescription: &errorDescription)
+                                        await self.addRelatedSongs()
                                         musicManager.removeDuplicates()
                                         withAnimation {
                                             queue = musicManager.fetch()

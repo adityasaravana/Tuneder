@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import Defaults
 
 struct SettingsView: View {
-    @AppStorage(AppStorageNames.explicitContentAllowed.name) var explicitContentAllowed: Bool = true
-    @AppStorage(AppStorageNames.showExplicitContentWarning.name) var showExplicitContentWarning: Bool = true
+    @Default(.explicitContentAllowed) var explicitContentAllowed
+    @Default(.showExplicitContentWarning) var showExplicitContentWarning
     var body: some View {
         NavigationStack {
             Form {

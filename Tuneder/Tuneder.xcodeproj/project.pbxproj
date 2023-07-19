@@ -26,7 +26,6 @@
 		597CF4D92A5126E700670752 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597CF4D82A5126E700670752 /* ErrorView.swift */; };
 		59B244452A46B2D5003973D3 /* SongsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B244442A46B2D5003973D3 /* SongsView.swift */; };
 		59D828302A4D3B33001E868E /* MusicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D8282F2A4D3B33001E868E /* MusicManager.swift */; };
-		59D828322A4D5D0D001E868E /* AppStorageNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D828312A4D5D0D001E868E /* AppStorageNames.swift */; };
 		59D828342A4D6670001E868E /* ForEachWithIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D828332A4D6670001E868E /* ForEachWithIndex.swift */; };
 		59D828362A4E6CF7001E868E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D828352A4E6CF7001E868E /* MainView.swift */; };
 		59D8283C2A4E9F7F001E868E /* ModernAVPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = 59D8283B2A4E9F7F001E868E /* ModernAVPlayer */; };
@@ -56,7 +55,6 @@
 		597CF4D82A5126E700670752 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		59B244442A46B2D5003973D3 /* SongsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsView.swift; sourceTree = "<group>"; };
 		59D8282F2A4D3B33001E868E /* MusicManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicManager.swift; sourceTree = "<group>"; };
-		59D828312A4D5D0D001E868E /* AppStorageNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageNames.swift; sourceTree = "<group>"; };
 		59D828332A4D6670001E868E /* ForEachWithIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForEachWithIndex.swift; sourceTree = "<group>"; };
 		59D828352A4E6CF7001E868E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		59D828432A4EAE68001E868E /* ModernAVPlayer.State.systemName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModernAVPlayer.State.systemName.swift; sourceTree = "<group>"; };
@@ -86,7 +84,6 @@
 		5909A4302A3BFB21006B5B6D = {
 			isa = PBXGroup;
 			children = (
-				59D828312A4D5D0D001E868E /* AppStorageNames.swift */,
 				59D8282F2A4D3B33001E868E /* MusicManager.swift */,
 				5953C1DE2A4273F600A3F685 /* GenreData.swift */,
 				5953C1DC2A4273EA00A3F685 /* GenreSelection.swift */,
@@ -253,7 +250,6 @@
 				59EDCBDF2A3FFA1500FA6747 /* SettingsView.swift in Sources */,
 				59D828342A4D6670001E868E /* ForEachWithIndex.swift in Sources */,
 				59D828302A4D3B33001E868E /* MusicManager.swift in Sources */,
-				59D828322A4D5D0D001E868E /* AppStorageNames.swift in Sources */,
 				590A4FAC2A3EA40F00FCF5AE /* SignUpForAppleMusicView.swift in Sources */,
 				597CF4D92A5126E700670752 /* ErrorView.swift in Sources */,
 				59FCBA582A3D06D700FD6BB2 /* SongBackgroundView.swift in Sources */,

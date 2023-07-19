@@ -11,6 +11,7 @@ import MusadoraKit
 import ModernAVPlayer
 import RxModernAVPlayer
 import RxSwift
+import Defaults
 
 /// This view is the tile for each song, with the song's details, album art, and an audio player that plays Apple Music's preview for it.
 
@@ -26,7 +27,7 @@ struct SongPreviewView: View {
     @Binding var errorDescription: String
     @State fileprivate var player = ModernAVPlayer()
     
-    @AppStorage(AppStorageNames.showExplicitContentWarning.name) var showExplicitContentWarning: Bool = true
+    @Default(.showExplicitContentWarning) var showExplicitContentWarning
     @State fileprivate var translation: CGSize = .zero
     @State fileprivate var swipeStatus: LikeDislike = .none
     
@@ -42,6 +43,15 @@ struct SongPreviewView: View {
     func getGesturePercentage(_ geometry: GeometryProxy, from gesture: DragGesture.Value) -> CGFloat {
         gesture.translation.width / geometry.size.width
     }
+    
+    func addChartSongs() async {
+        var showingErrorScreen = self.showingErrorScreen
+        var errorDescription = self.errorDescription
+        await musicManager.addRelatedSongs(from: lastLikedSong!, failed: &showingErrorScreen, errorDescription: &errorDescription)
+        self.showingErrorScreen = showingErrorScreen
+        self.errorDescription = errorDescription
+    }
+    
     
     var body: some View {
         GeometryReader { geometry in
@@ -148,7 +158,7 @@ struct SongPreviewView: View {
                                 }
                                 
                                 Task {
-                                    await musicManager.addRelatedSongs(from: lastLikedSong!, failed: &showingErrorScreen, errorDescription: &errorDescription)
+                                    await self.addChartSongs()
                                 }
                             }
                             
@@ -250,7 +260,7 @@ struct ButtonView: View {
         .background(.thinMaterial)
         .cornerRadius(CGFloat(Int.max))
         .onAppear {
-            let state: Observable<ModernAVPlayer.State> = player.rx.state
+            let state = player.rx.state
             state
                 .subscribe(onNext: { [ self ] currentState in
                     playerState = currentState
