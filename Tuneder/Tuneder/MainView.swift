@@ -115,7 +115,7 @@ struct MainView: View {
             }
             
         }
-        .sheet(isPresented: $showingSettings) { SettingsView() }
+        .sheet(isPresented: $showingSettings) { SettingsView(showing: $showingSettings) }
         .onAppear {
             
             //#if DEBUG

@@ -11,6 +11,8 @@ import Defaults
 struct SettingsView: View {
     @Default(.explicitContentAllowed) var explicitContentAllowed
     @Default(.showExplicitContentWarning) var showExplicitContentWarning
+    @Binding var showing: Bool
+    
     var body: some View {
         NavigationStack {
             Form {
@@ -20,7 +22,19 @@ struct SettingsView: View {
                 }
             }
             .navigationBarTitle("Settings")
-        }.onChange(of: explicitContentAllowed) { newValue in
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        withAnimation {
+                            showing = false
+                        }
+                    } label: {
+                        Image(systemName: "xmark").font(.system(size: 20))
+                    }
+                }
+            }
+        }
+        .onChange(of: explicitContentAllowed) { newValue in
             if !newValue {
                 showExplicitContentWarning = false
             }
@@ -30,6 +44,6 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        SettingsView(showing: .constant(true))
     }
 }
