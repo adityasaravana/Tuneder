@@ -2,7 +2,6 @@
 
 <a href="https://apps.apple.com/us/app/tuneder-song-discovery/id6450867856?itsct=apps_box_badge&amp;itscg=30200" style="display: inline-block; overflow: hidden; border-radius: 13px; width: 250px; height: 83px;"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&amp;releaseDate=1688515200" alt="Download on the App Store" style="border-radius: 13px; width: 250px; height: 83px;"></a>
 
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/F1F6MHTT3)
 
 <strong>
 <a href="https://github.com/Divide-By-0/app-ideas-people-would-use">💡 Idea by Divide-By-0.</a>
