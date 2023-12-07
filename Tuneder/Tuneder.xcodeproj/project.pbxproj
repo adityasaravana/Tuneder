@@ -35,6 +35,7 @@
 		59FCBA4A2A3C00CE00FD6BB2 /* SongPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FCBA492A3C00CE00FD6BB2 /* SongPreviewView.swift */; };
 		59FCBA582A3D06D700FD6BB2 /* SongBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FCBA572A3D06D700FD6BB2 /* SongBackgroundView.swift */; };
 		59FCBA5B2A3D078200FD6BB2 /* ColorKit in Frameworks */ = {isa = PBXBuildFile; productRef = 59FCBA5A2A3D078200FD6BB2 /* ColorKit */; };
+		6BF1F1762B22657B002A9361 /* SharedCode in Frameworks */ = {isa = PBXBuildFile; productRef = 6BF1F1752B22657B002A9361 /* SharedCode */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 				59FCBA5B2A3D078200FD6BB2 /* ColorKit in Frameworks */,
 				59557DA92A3D66A900ED1B74 /* SwiftfulLoadingIndicators in Frameworks */,
 				59D8283E2A4E9F7F001E868E /* RxModernAVPlayer in Frameworks */,
+				6BF1F1762B22657B002A9361 /* SharedCode in Frameworks */,
 				590A4F9D2A3E927000FCF5AE /* Defaults in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -174,6 +176,7 @@
 				590A4F9C2A3E927000FCF5AE /* Defaults */,
 				59D8283B2A4E9F7F001E868E /* ModernAVPlayer */,
 				59D8283D2A4E9F7F001E868E /* RxModernAVPlayer */,
+				6BF1F1752B22657B002A9361 /* SharedCode */,
 			);
 			productName = Tuneder;
 			productReference = 5909A4392A3BFB21006B5B6D /* Tuneder.app */;
@@ -209,6 +212,7 @@
 				59557DAC2A3E559D00ED1B74 /* XCRemoteSwiftPackageReference "MusadoraKit" */,
 				590A4F9B2A3E927000FCF5AE /* XCRemoteSwiftPackageReference "Defaults" */,
 				59D8283A2A4E9F7F001E868E /* XCRemoteSwiftPackageReference "ModernAVPlayer" */,
+				6BF1F1742B22657B002A9361 /* XCRemoteSwiftPackageReference "SharedCode" */,
 			);
 			productRefGroup = 5909A43A2A3BFB21006B5B6D /* Products */;
 			projectDirPath = "";
@@ -516,6 +520,14 @@
 				kind = branch;
 			};
 		};
+		6BF1F1742B22657B002A9361 /* XCRemoteSwiftPackageReference "SharedCode" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/adityasaravana/SharedCode.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -548,6 +560,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 59FCBA592A3D078200FD6BB2 /* XCRemoteSwiftPackageReference "ColorKit" */;
 			productName = ColorKit;
+		};
+		6BF1F1752B22657B002A9361 /* SharedCode */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6BF1F1742B22657B002A9361 /* XCRemoteSwiftPackageReference "SharedCode" */;
+			productName = SharedCode;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

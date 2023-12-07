@@ -109,6 +109,7 @@ struct MainView: View {
                                 }
                             }
                         Spacer()
+                        
                         Text("Having issues? Email aditya.saravana@icloud.com").padding(.bottom)
                     }
                 }

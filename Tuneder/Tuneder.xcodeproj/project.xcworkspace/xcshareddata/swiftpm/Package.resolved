@@ -37,12 +37,30 @@
       }
     },
     {
+      "identity" : "osinfo",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/MarcoEidinger/OSInfo.git",
+      "state" : {
+        "revision" : "54fd6673923ef5966268918152235b0e15ed057c",
+        "version" : "1.0.1"
+      }
+    },
+    {
       "identity" : "rxswift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ReactiveX/RxSwift.git",
       "state" : {
         "revision" : "cec68169a048a079f461ba203fe85636548d7a89",
         "version" : "5.1.3"
+      }
+    },
+    {
+      "identity" : "sharedcode",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/adityasaravana/SharedCode.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "89ce6960165a0a2e7843908d11519dd0e10ab07b"
       }
     },
     {
