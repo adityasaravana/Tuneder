@@ -32,7 +32,6 @@ struct SongBackgroundView: View {
                 print(error)
             }
         }
-            
     }
 }
 

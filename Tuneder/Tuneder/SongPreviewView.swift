@@ -134,19 +134,19 @@ struct SongPreviewView: View {
                     .onChanged { value in
                         translation = value.translation
                         
-                        if (getGesturePercentage(geometry, from: value)) >= thresholdPercentage {
-                            swipeStatus = .like
-                        } else if getGesturePercentage(geometry, from: value) <= -thresholdPercentage {
-                            swipeStatus = .dislike
-                        } else {
-                            swipeStatus = .none
+                        withAnimation {
+                            if (getGesturePercentage(geometry, from: value)) >= thresholdPercentage {
+                                swipeStatus = .like
+                            } else if getGesturePercentage(geometry, from: value) <= -thresholdPercentage {
+                                swipeStatus = .dislike
+                            } else {
+                                swipeStatus = .none
+                            }
                         }
-                        
                     }.onEnded { value in
                         // determine snap distance > 0.5 aka half the width of the screen
                         if abs(getGesturePercentage(geometry, from: value)) > thresholdPercentage {
                             player.stop()
-                            
                             translation = .zero
                             
                             if swipeStatus == .like {
@@ -166,7 +166,9 @@ struct SongPreviewView: View {
                             
                             onRemove()
                         } else {
-                            translation = .zero
+                            withAnimation {
+                                translation = .zero
+                            }
                         }
                     }
             )
@@ -193,7 +195,7 @@ struct SongImageView: View {
     var body: some View {
         AsyncImage(url: song.artwork?.url(width: Int(geometry.size.width), height: Int(geometry.size.height))) { image in
             image
-
+            
                 .resizable()
                 .overlay (
                     Rectangle()

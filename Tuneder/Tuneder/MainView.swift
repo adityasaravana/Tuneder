@@ -68,7 +68,7 @@ struct MainView: View {
                             Spacer()
                             VStack {
                                 Spacer()
-                                Text("Genre Preference").foregroundColor(.white).bold()
+                                Text("Genre").foregroundColor(.white).bold()
                                 Picker("Genre", selection: $genreSelection) {
                                     ForEach(GenreSelection.allCases) { genre in
                                         Text(genre.genreData.name)
@@ -102,9 +102,11 @@ struct MainView: View {
                                         }
                                     }
                                 } else {
-                                    musicManager.removeDuplicates()
-                                    withAnimation {
-                                        queue = musicManager.fetch()
+                                    Task {
+                                        musicManager.removeDuplicates()
+                                        withAnimation {
+                                            queue = musicManager.fetch()
+                                        }
                                     }
                                 }
                             }
